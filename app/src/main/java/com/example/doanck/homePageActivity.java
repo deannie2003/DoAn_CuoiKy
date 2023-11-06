@@ -45,7 +45,7 @@ public class homePageActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
-                            case R.id.english:
+                            case R.id.engli sh:
                                 // Xử lý khi chọn tiếng Anh
                                 break;
                             case R.id.vietnamese:
