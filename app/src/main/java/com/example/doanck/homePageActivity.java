@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
 
+import java.util.Locale;
 
 
 public class homePageActivity extends AppCompatActivity {
     private Button btn,btn1;
+    private String currentLanguage = "en";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,6 @@ public class homePageActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-
+       
     }
 }
