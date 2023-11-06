@@ -45,7 +45,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="56dp" />
-
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="36dp"
