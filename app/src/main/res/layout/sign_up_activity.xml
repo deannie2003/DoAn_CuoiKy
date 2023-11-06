@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="REGISTER"
-        android:textColor="#6672FF"
+        android:textColor="@color/design_default_color_primary"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
+            android:background="@color/design_default_color_primary"
             android:text="BACK"
             android:textColor="@color/white" />
 
@@ -137,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
+            android:background="@color/design_default_color_primary"
             android:text="SIGN UP"
 
             android:textColor="@color/white" />
