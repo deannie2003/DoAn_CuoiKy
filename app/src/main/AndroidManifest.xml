@@ -6,8 +6,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/notification"
+        android:label="Dự báo khí tượng"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Page2"
@@ -16,10 +16,10 @@
             android:name=".sign_in_activity"
             android:exported="false" />
         <activity
-            android:name=".homePageActivity"
+            android:name=".sign_up_activity"
             android:exported="false" />
         <activity
-            android:name=".sign_up_activity"
+            android:name=".homePageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
