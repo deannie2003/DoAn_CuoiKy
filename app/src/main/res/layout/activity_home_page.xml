@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".homePageActivity"
     tools:ignore="ExtraText">
 
@@ -36,18 +35,24 @@
         android:id="@+id/HomepageTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="53dp"
         android:text="Air Quality Monitoring"
         android:textColor="#321cad"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="52dp" />
+        tools:layout_editor_absoluteY="56dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="36dp"
         android:layout_height="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="18dp"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_7"
         tools:layout_editor_absoluteX="375dp" />
@@ -56,7 +61,10 @@
         android:id="@+id/button"
         android:layout_width="208dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="120dp"
+        android:layout_marginTop="224dp"
         android:layout_marginRight="120dp"
         android:padding="15dp"
         android:text="SIGN IN"
@@ -83,8 +91,11 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginBottom="330dp"
         android:padding="15dp"
         android:text="SIGN UP"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,8 +108,11 @@
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginBottom="253dp"
         android:padding="15dp"
         android:text="CONTINUE WITH GOOGLE"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,16 +123,22 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="210dp"
         android:text="Forgot your password?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="524dp" />
+        tools:layout_editor_absoluteY="530dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
         android:text="OR"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -132,4 +152,6 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>
