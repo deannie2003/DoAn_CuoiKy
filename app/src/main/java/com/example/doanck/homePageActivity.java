@@ -30,5 +30,34 @@ public class homePageActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+        Button languageButton = findViewById(R.id.imageButton);
+
+        languageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Tạo PopupMenu và gán nó với Button
+                PopupMenu popupMenu = new PopupMenu(homePageActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.languages_menu, popupMenu.getMenu());
+
+                // Xử lý sự kiện khi một ngôn ngữ được chọn từ PopupMenu
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.english:
+                                // Xử lý khi chọn tiếng Anh
+                                break;
+                            case R.id.vietnamese:
+                                // Xử lý khi chọn tiếng Việt
+                                break;
+                        }
+                        return true;
+                    }
+                });
+
+                // Hiển thị PopupMenu
+                popupMenu.show();
+            }
+        });
     }
 }
