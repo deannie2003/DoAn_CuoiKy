@@ -58,7 +58,7 @@ public class sign_in_activity extends AppCompatActivity {
     }
     //Hàm để xử lý đăng nhập
     private void Signin(){
-        ApiInterface.apiInterface.authenticate("openremote",userName.toString(),Password.toString(),Email.toString(),"password")
+        ApiInterface.apiInterface.authenticate("openremote",userName.getText().toString(),Password.getText().toString(),Email.getText().toString(),"password")
                 .enqueue(new Callback<AssetToken>() {
                     //call API bat dong bo
                     @Override
