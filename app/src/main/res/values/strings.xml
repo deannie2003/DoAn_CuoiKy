@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Page2</string>
+    <string name="signin">SIGN IN</string>
+    <string name="signup">SIGN UP</string>
+    <string name="airmonitor">Air Quality Monitoring</string>
+    <string name="or">OR</string>
+    <string name="forgot">Forgot your password?</string>
+    <string name="username">User name</string>
+    <string name="email">Email</string>
+    <string name="Password">Password</string>
+    <string name="Re_enter">Re-enter the password</string>
+    <string name="back">BACK</string>
+    <string name="register">REGISTER</string>
+
 </resources>
