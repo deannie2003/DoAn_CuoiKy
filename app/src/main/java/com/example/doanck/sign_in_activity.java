@@ -44,7 +44,6 @@ public class sign_in_activity extends AppCompatActivity {
               Signin();
             }
         });
-
     }
 
 
@@ -66,15 +65,16 @@ public class sign_in_activity extends AppCompatActivity {
                         if(response.isSuccessful()){
                             AssetToken assetToken = response.body();
                             String token = assetToken.getAccessToken();
-                            Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
-                            startActivity(intent);
+                            if(token != null ){
+                                Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
+                                startActivity(intent);
+                            }
                         }
                         else{
                             Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onFailure(Call<AssetToken> call, Throwable t) {
                         Toast.makeText(sign_in_activity.this, "Call API lỗi !!", Toast.LENGTH_SHORT).show();
