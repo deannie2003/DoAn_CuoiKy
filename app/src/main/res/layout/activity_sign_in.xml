@@ -62,18 +62,18 @@
         app:srcCompat="@drawable/top_background1"
         tools:layout_editor_absoluteY="0dp" />
 
-    <Button
-        style="?attr/materialIconButtonFilledStyle"
+    <ImageButton
         android:id="@+id/imgChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        app:icon="@drawable/ic_settings_24dp"
+        android:src="@drawable/ic_settings_24dp"
         app:iconSize="25dp"
-        app:backgroundTint="@color/accent_color"
+        app:tint="#FFFFFF"
+        android:background="@drawable/btn_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,7 +135,7 @@
         tools:layout_editor_absoluteY="610dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/titleSignin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

@@ -25,7 +25,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class sign_up_activity extends AppCompatActivity {
-
     EditText username, email, password, re_password;
     Button btn_register;
 

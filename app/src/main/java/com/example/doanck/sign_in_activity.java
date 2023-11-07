@@ -66,11 +66,13 @@ public class sign_in_activity extends AppCompatActivity {
         Email = findViewById(R.id.email);
         Password = findViewById(R.id.password);
         img_change = findViewById(R.id.imgChange);
+        txt_sign_in = findViewById(R.id.titleSignin);
     }
     private void ChangeLanguage(){
         isChanged =!isChanged;
         if(isChanged){
-            img_change.setImageResource(R.drawable.icon_vietnam);
+            img_change.setBackgroundResource(R.drawable.icon_vietnam);
+            img_change.setImageDrawable(null);
             bttn_sign_in.setText("ĐĂNG NHẬP");
             bttn_back_to_homePage.setText("QUAY VỀ");
             Email.setText("Email");
@@ -78,7 +80,8 @@ public class sign_in_activity extends AppCompatActivity {
             userName.setText("Tên người dùng");
             txt_sign_in.setText("ĐĂNG NHẬP");
         }else{
-            img_change.setImageResource(R.drawable.icon_uk);
+            img_change.setBackgroundResource(R.drawable.icon_uk);
+            img_change.setImageDrawable(null);
             bttn_sign_in.setText("SIGN IN");
             bttn_back_to_homePage.setText("BACK");
             Email.setText("Email");
