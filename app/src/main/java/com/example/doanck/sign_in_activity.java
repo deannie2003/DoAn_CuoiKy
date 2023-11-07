@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,14 +21,23 @@ import retrofit2.Response;
 
 public class sign_in_activity extends AppCompatActivity {
 
-    Button bttn_sign_in, bttn_sign_up, bttn_back_to_homePage;
+    Button bttn_sign_in, bttn_back_to_homePage;
     EditText userName,Email,Password;
+    TextView txt_sign_in;
+    private ImageView img_change;
+    boolean isChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         loadElement();
+        img_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChangeLanguage();
+            }
+        });
 
 
         //nhấn button trở về home page
@@ -54,6 +65,27 @@ public class sign_in_activity extends AppCompatActivity {
         userName = findViewById(R.id.user_name);
         Email = findViewById(R.id.email);
         Password = findViewById(R.id.password);
+        img_change = findViewById(R.id.imgChange);
+    }
+    private void ChangeLanguage(){
+        isChanged =!isChanged;
+        if(isChanged){
+            img_change.setImageResource(R.drawable.icon_vietnam);
+            bttn_sign_in.setText("ĐĂNG NHẬP");
+            bttn_back_to_homePage.setText("QUAY VỀ");
+            Email.setText("Email");
+            Password.setText("Mật khẩu");
+            userName.setText("Tên người dùng");
+            txt_sign_in.setText("ĐĂNG NHẬP");
+        }else{
+            img_change.setImageResource(R.drawable.icon_uk);
+            bttn_sign_in.setText("SIGN IN");
+            bttn_back_to_homePage.setText("BACK");
+            Email.setText("Email");
+            Password.setText("Password");
+            userName.setText("Username");
+            txt_sign_in.setText("SIGN IN");
+        }
     }
     //Hàm để xử lý đăng nhập
     private void Signin(){
@@ -80,4 +112,5 @@ public class sign_in_activity extends AppCompatActivity {
                 });
 
     }
+
 }
