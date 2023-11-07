@@ -19,18 +19,20 @@
         app:srcCompat="@drawable/top_background2"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
+    <Button
+        style="?attr/materialIconButtonFilledStyle"
         android:id="@+id/imgChange"
-        android:layout_width="48dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:contentDescription="null"
+        app:icon="@drawable/ic_settings_24dp"
+        app:iconSize="25dp"
+        app:backgroundTint="@color/accent_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_7" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/registerTxt"
@@ -38,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="REGISTER"
-        android:textColor="@color/design_default_color_primary"
+        android:textColor="@color/accent_color"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,12 +134,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/reenterPassEditTxt">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/backBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
+            android:padding="15dp"
+            app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+            app:backgroundTint="@color/accent_color"
             android:text="BACK"
             android:textColor="@color/white" />
 
@@ -145,12 +149,14 @@
             android:layout_width="50dp"
             android:layout_height="match_parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/signupBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
+            android:padding="15dp"
+            app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+            app:backgroundTint="@color/accent_color"
             android:text="SIGN UP"
 
             android:textColor="@color/white" />

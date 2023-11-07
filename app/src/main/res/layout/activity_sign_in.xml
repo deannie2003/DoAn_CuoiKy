@@ -61,17 +61,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/top_background1"
         tools:layout_editor_absoluteY="0dp" />
-    <ImageButton
+
+    <Button
+        style="?attr/materialIconButtonFilledStyle"
         android:id="@+id/imgChange"
-        android:contentDescription="null"
-        android:layout_width="48dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_7"
-        />
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        app:icon="@drawable/ic_settings_24dp"
+        app:iconSize="25dp"
+        app:backgroundTint="@color/accent_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/email"
@@ -103,7 +107,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="18dp"
-        android:background="@drawable/btn_background"
+        android:padding="15dp"
+        app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+        app:backgroundTint="@color/accent_color"
         android:text="SIGN IN"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +124,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="18dp"
-        android:background="@drawable/btn_background"
+        android:padding="15dp"
+        app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+        app:backgroundTint="@color/accent_color"
         android:text="BACK"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,8 +145,8 @@
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="394dp"
         android:text="SIGN IN"
-        android:textColor="@color/design_default_color_primary"
-        android:textColorHighlight="@color/design_default_color_primary"
+        android:textColor="@color/accent_color"
+        android:textColorHighlight="@color/accent_color"
         android:textSize="48sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="25dp"
