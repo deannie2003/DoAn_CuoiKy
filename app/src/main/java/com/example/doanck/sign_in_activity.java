@@ -62,14 +62,12 @@ public class sign_in_activity extends AppCompatActivity {
                     //call API bat dong bo
                     @Override
                     public void onResponse(Call<AssetToken> call, Response<AssetToken> response) {
-                        if(response.isSuccessful()){
-                            AssetToken assetToken = response.body();
-                            String token = assetToken.getAccessToken();
-                            if(token != null ){
+                        AssetToken assetToken = response.body();
+                        String token = assetToken.getAccessToken();
+                        if(token!= null){
                                 Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
                                 startActivity(intent);
-                            }
                         }
                         else{
                             Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
