@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
+=======
+import android.widget.PopupMenu;
+>>>>>>> 99112b6d4aba7f5dabef23d6f8defa121381fab7
 
 
 public class homePageActivity extends AppCompatActivity {
@@ -54,6 +58,38 @@ public class homePageActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
+
+        languageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Tạo PopupMenu và gán nó với Button
+                PopupMenu popupMenu = new PopupMenu(homePageActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.languages_menu, popupMenu.getMenu());
+
+                // Xử lý sự kiện khi một ngôn ngữ được chọn từ PopupMenu
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.english:
+                                // Xử lý khi chọn tiếng Anh
+                                break;
+                            case R.id.vietnamese:
+                                // Xử lý khi chọn tiếng Việt
+                                break;
+                        }
+                        return true;
+                    }
+                });
+
+                // Hiển thị PopupMenu
+                popupMenu.show();
+            }
+        });
+
+>>>>>>> 99112b6d4aba7f5dabef23d6f8defa121381fab7
     }
     private void LoadElement(){
         btn_sign_in = findViewById(R.id.button);
