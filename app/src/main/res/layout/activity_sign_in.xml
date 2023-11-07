@@ -103,11 +103,11 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="18dp"
-        android:background="@color/cardview_dark_background"
+        android:background="@drawable/btn_background"
         android:text="SIGN IN"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:strokeColor="@color/design_default_color_primary_variant"
+
         tools:layout_editor_absoluteY="610dp" />
 
     <Button
@@ -118,7 +118,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="18dp"
-        android:background="@color/cardview_dark_background"
+        android:background="@drawable/btn_background"
         android:text="BACK"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
