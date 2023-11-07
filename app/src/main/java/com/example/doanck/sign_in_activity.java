@@ -44,7 +44,6 @@ public class sign_in_activity extends AppCompatActivity {
               Signin();
             }
         });
-
     }
 
 
@@ -58,23 +57,22 @@ public class sign_in_activity extends AppCompatActivity {
     }
     //Hàm để xử lý đăng nhập
     private void Signin(){
-        ApiInterface.apiInterface.authenticate("openremote",userName.toString(),Password.toString(),Email.toString(),"password")
+        ApiInterface.apiInterface.authenticate("openremote",userName.getText().toString(),Password.getText().toString(),Email.getText().toString(),"password")
                 .enqueue(new Callback<AssetToken>() {
                     //call API bat dong bo
                     @Override
                     public void onResponse(Call<AssetToken> call, Response<AssetToken> response) {
-                        if(response.isSuccessful()){
-                            AssetToken assetToken = response.body();
-                            String token = assetToken.getAccessToken();
-                            Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
-                            startActivity(intent);
+                        AssetToken assetToken = response.body();
+                        String token = assetToken.getAccessToken();
+                        if(token!= null){
+                                Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
+                                startActivity(intent);
                         }
                         else{
                             Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onFailure(Call<AssetToken> call, Throwable t) {
                         Toast.makeText(sign_in_activity.this, "Call API lỗi !!", Toast.LENGTH_SHORT).show();
