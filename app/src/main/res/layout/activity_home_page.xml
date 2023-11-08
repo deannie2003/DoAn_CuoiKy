@@ -150,8 +150,4 @@
         android:textColor="@color/black"/>
     tools:ignore="MissingConstraints" />
 
-
-
-
-
 </RelativeLayout>
