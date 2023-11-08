@@ -64,7 +64,6 @@ public class homePageActivity extends AppCompatActivity {
         btn_sign_in = findViewById(R.id.button);
         btn_sign_up = findViewById(R.id.button2);
         img = findViewById(R.id.imageButton);
-        txt_title = findViewById(R.id.HomepageTxt);
         txt_or = findViewById(R.id.textView2);
         btn_google = findViewById(R.id.button3);
         btn_reset = findViewById(R.id.button4);
@@ -74,7 +73,6 @@ public class homePageActivity extends AppCompatActivity {
         if(isChanged){
             img.setBackgroundResource(R.drawable.icon_vietnam);
             img.setImageDrawable(null);
-            txt_title.setText("Dự báo khí tượng");
             btn_sign_in.setText("ĐĂNG NHẬP");
             txt_or.setText("HOẶC");
             btn_sign_up.setText("ĐĂNG KÝ");
@@ -83,7 +81,6 @@ public class homePageActivity extends AppCompatActivity {
         }else{
             img.setBackgroundResource(R.drawable.icon_uk);
             img.setImageDrawable(null);
-            txt_title.setText("Air Quality Monitoring");
             btn_sign_in.setText("SIGN IN");
             txt_or.setText("OR");
             btn_sign_up.setText("SIGN UP");
