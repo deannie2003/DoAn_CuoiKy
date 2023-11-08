@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homePageActivity">
+    tools:context=".homePageActivity"
+    tools:ignore="ExtraText">
 
     <ImageView
         android:id="@+id/HomePageBottom"
@@ -25,7 +25,7 @@
         android:layout_height="165dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/top_background"
@@ -48,7 +48,6 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-<<<<<<< HEAD
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
@@ -143,17 +142,4 @@
         android:text="Forgot your password?"
         android:textColor="@color/black"/>
     tools:ignore="MissingConstraints" />
-=======
-        android:layout_width="48dp"
-        android:layout_height="39dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:contentDescription="null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_7" />
->>>>>>> 66dc621cb683c1254068908e0cbaf1b0bb2b87bc
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

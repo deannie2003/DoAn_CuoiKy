@@ -31,7 +31,7 @@ public class sign_in_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        LoadElement();
+        loadElement();
         img_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,14 +52,14 @@ public class sign_in_activity extends AppCompatActivity {
         bttn_sign_in.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-              Signin();
+                Signin();
             }
         });
     }
 
 
     //Hàm để load các phần tử trong UI
-    private void LoadElement(){
+    private void loadElement(){
         bttn_sign_in = findViewById(R.id.button_sign_in);
         bttn_back_to_homePage = findViewById(R.id.button_homepage);
         userName = findViewById(R.id.user_name);
@@ -100,9 +100,9 @@ public class sign_in_activity extends AppCompatActivity {
                         AssetToken assetToken = response.body();
                         String token = assetToken.getAccessToken();
                         if(token!= null){
-                                Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
-                                startActivity(intent);
+                            Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
+                            startActivity(intent);
                         }
                         else{
                             Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
