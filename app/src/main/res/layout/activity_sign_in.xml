@@ -29,11 +29,11 @@
             tools:layout_editor_absoluteY="109dp" />
 
         <EditText
-            tools:ignore="MissingConstraints"
             android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/name"
             android:drawablePadding="16dp"
@@ -45,15 +45,18 @@
             android:textColorHint="#0c58ab"
             android:textSize="22sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="218dp" />
+            app:layout_constraintTop_toBottomOf="@+id/titleSignin"
+            tools:ignore="MissingConstraints" />
 
         <EditText
-            tools:ignore="MissingConstraints"
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/email"
             android:drawablePadding="16dp"
@@ -66,13 +69,14 @@
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="319dp" />
+            app:layout_constraintTop_toBottomOf="@+id/user_name"
+            tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/password"
