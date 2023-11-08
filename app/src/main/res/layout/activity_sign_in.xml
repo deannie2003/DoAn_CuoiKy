@@ -4,8 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFF0FC"
+    android:background="@drawable/back_gground"
     tools:context=".sign_in_activity" >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/titleSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="SIGN IN"
+            android:textColor="#81d7eb"
+            android:textColorHighlight="@color/accent_color"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="266dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/user_name"
@@ -48,18 +69,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email"
         tools:layout_editor_absoluteY="520dp" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="match_parent"
-        android:layout_height="271dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/top_background1"
-        tools:layout_editor_absoluteY="0dp" />
 
     <ImageButton
         android:id="@+id/imgChange"
@@ -132,21 +141,4 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="610dp" />
 
-    <TextView
-        android:id="@+id/titleSignin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="394dp"
-        android:text="SIGN IN"
-        android:textColor="@color/accent_color"
-        android:textColorHighlight="@color/accent_color"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="375dp" />
 </RelativeLayout>
