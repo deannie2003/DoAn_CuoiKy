@@ -59,6 +59,9 @@ public class homePageActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+
+
+
     }
     private void LoadElement(){
         btn_sign_in = findViewById(R.id.button);
@@ -69,27 +72,39 @@ public class homePageActivity extends AppCompatActivity {
         btn_google = findViewById(R.id.button3);
         btn_reset = findViewById(R.id.button4);
     }
+<<<<<<< HEAD
     private void ChangeLanguage(){
         isChanged =!isChanged;
         if(isChanged){
             img.setBackgroundResource(R.drawable.icon_vietnam);
             img.setImageDrawable(null);
+=======
+    private void ChangeLanguage() {
+        isChanged = !isChanged;
+        if (isChanged) {
+            img.setImageResource(R.drawable.icon_vietnam);
+>>>>>>> 66dc621cb683c1254068908e0cbaf1b0bb2b87bc
             txt_title.setText("Dự báo khí tượng");
             btn_sign_in.setText("ĐĂNG NHẬP");
             txt_or.setText("HOẶC");
             btn_sign_up.setText("ĐĂNG KÝ");
             btn_google.setText("ĐĂNG NHẬP VỚI GOOGLE");
             btn_reset.setText("Bạn quên mật khẩu?");
+<<<<<<< HEAD
         }else{
             img.setBackgroundResource(R.drawable.icon_uk);
             img.setImageDrawable(null);
+=======
+        } else {
+            img.setImageResource(R.drawable.icon_uk);
+>>>>>>> 66dc621cb683c1254068908e0cbaf1b0bb2b87bc
             txt_title.setText("Air Quality Monitoring");
             btn_sign_in.setText("SIGN IN");
             txt_or.setText("OR");
             btn_sign_up.setText("SIGN UP");
             btn_google.setText("CONTINUE WITH GOOGLE");
             btn_reset.setText("Forgot your password?");
+
         }
     }
-
 }

@@ -31,7 +31,7 @@ public class sign_in_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        loadElement();
+        LoadElement();
         img_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +59,7 @@ public class sign_in_activity extends AppCompatActivity {
 
 
     //Hàm để load các phần tử trong UI
-    private void loadElement(){
+    private void LoadElement(){
         bttn_sign_in = findViewById(R.id.button_sign_in);
         bttn_back_to_homePage = findViewById(R.id.button_homepage);
         userName = findViewById(R.id.user_name);
