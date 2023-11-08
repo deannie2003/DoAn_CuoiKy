@@ -8,14 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
-
+import org.jsoup.select.Elements;
 
 
 import java.io.IOException;
@@ -33,7 +33,6 @@ import okhttp3.Response;
 public class sign_up_activity extends AppCompatActivity {
     EditText username, email, password, re_password;
     Button btn_register, btn_back;
-
     ImageView img_change;
     TextView txt_reg;
     boolean isChanged = false;
@@ -54,14 +53,12 @@ public class sign_up_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
-
         username = findViewById(R.id.usernameEditTxt);
         email = findViewById(R.id.emailEditTxt);
         password = findViewById(R.id.passwordEditTxt);
         re_password = findViewById(R.id.reenterPassEditTxt);
         btn_register = findViewById(R.id.button_sign_up);
         btn_back = findViewById(R.id.button_homepage);
-        img_change = findViewById(R.id.imgChange);
         txt_reg = findViewById(R.id.registerTxt);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -71,18 +68,12 @@ public class sign_up_activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        img_change.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ChangeLanguage();
-            }
-        });
 
         btn_register.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 String url = "https://uiot.ixxc.dev/auth/realms/master/protocol/openid-connect/auth?response_type=code&client_id=openremote&redirect_uri=https%3A%2F%2Fuiot.ixxc.dev%2Fswagger%2Foauth2-redirect.html";
-
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
                         .url(url)
@@ -112,7 +103,6 @@ public class sign_up_activity extends AppCompatActivity {
                                     .header("Cookie", Cookie.toString())
                                     .build();
 
-                            Log.d("MainActivity", "Cookie: " + Cookie.toString());
 
                             Call secondCall = secondClient.newCall(request);
 
@@ -120,13 +110,12 @@ public class sign_up_activity extends AppCompatActivity {
                                 public void onResponse(Call call, Response response)
                                         throws IOException {
                                     String RegURL = extractFeature(response.body().string(), "form", "action");
-                                    Log.d("MainActivity", Cookie.toString());
 
                                     RequestBody data = new FormBody.Builder()
                                             .add("username", username.getText().toString())
                                             .add("email", email.getText().toString())
                                             .add("password", password.getText().toString())
-                                            .add("password-confirm", re_password.getText().toString())
+                                            .add("repassword", re_password.getText().toString())
                                             .add("register", "")
                                             .build();
 
@@ -141,17 +130,55 @@ public class sign_up_activity extends AppCompatActivity {
                                     thirdCall.enqueue(new Callback() {
                                         public void onResponse(Call call, Response response)
                                                 throws IOException {
-                                            Log.d("MainActivity", response.body().string());
+
+                                            Document document = Jsoup.parse(response.body().string());
+                                            Elements redTextElements = document.select("span.red-text");
+                                            Element helperTextElement = document.select("span[data-error]").first();
+                                            if (!redTextElements.isEmpty()) {
+                                                Element errorElement = redTextElements.first();
+                                                String errorMessage = errorElement.text();
+                                                runOnUiThread(new Runnable() {
+                                                    public void run() {
+                                                        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                            }
+
+                                            if (helperTextElement != null) {
+                                                runOnUiThread(new Runnable() {
+                                                    public void run() {
+                                                        Toast.makeText(getApplicationContext(), helperTextElement.attr("data-error"), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                            }
+
+                                            if (redTextElements.isEmpty() && helperTextElement == null)
+                                                runOnUiThread(new Runnable() {
+                                                    public void run() {
+                                                        Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
                                         }
 
                                         public void onFailure(Call call, IOException e) {
-                                            Log.d("MainActivity", e.toString());
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
                                         }
                                     });
                                 }
 
                                 public void onFailure(Call call, IOException e) {
-                                    Log.d("MainActivity", e.toString());
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             });
 
@@ -159,33 +186,15 @@ public class sign_up_activity extends AppCompatActivity {
                     }
 
                     public void onFailure(Call call, IOException e) {
-                        Log.d("MainActivity", e.toString());
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
             }
         });
-    }
-    private void ChangeLanguage() {
-        isChanged = !isChanged;
-        if (isChanged) {
-            img_change.setImageResource(R.drawable.icon_vietnam);
-            username.setText("Tên người dùng");
-            email.setText("Email");
-            password.setText("Mật khẩu");
-            re_password.setText("Nhập lại mật khẩu");
-            btn_register.setText("ĐĂNG KÝ");
-            btn_back.setText("QUAY VỀ");
-            txt_reg.setText("ĐĂNG KÝ");
-        } else {
-            img_change.setImageResource(R.drawable.icon_uk);
-            username.setText("Username");
-            email.setText("Email");
-            password.setText("Password");
-            re_password.setText("Re-enter the password");
-            btn_register.setText("SIGN UP");
-            btn_back.setText("BACK");
-            txt_reg.setText("REGISTER");
-
-        }
     }
 }

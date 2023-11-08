@@ -8,146 +8,127 @@
     tools:context=".sign_up_activity" >
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-
         <TextView
             android:id="@+id/registerTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="70dp"
             android:text="SIGN UP"
             android:textColor="#0099FF"
             android:textColorHighlight="@color/accent_color"
             android:textSize="48sp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="93dp" />
+            tools:layout_editor_absoluteX="96dp"
+            tools:layout_editor_absoluteY="214dp"
+            android:gravity="center"/>
 
         <EditText
             android:id="@+id/usernameEditTxt"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/name"
             android:drawablePadding="16dp"
+            android:layout_below="@+id/registerTxt"
             android:paddingStart="16dp"
-            android:ems="10"
             android:fadeScrollbars="false"
             android:hint="Username"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="#0099FF"
+            android:textColor="#0099FF"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/registerTxt"
-            tools:ignore="MissingConstraints" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailEditTxt"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/usernameEditTxt"
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/email"
             android:drawablePadding="16dp"
             android:paddingStart="16dp"
-            android:ems="10"
             android:fadeScrollbars="false"
             android:hint="Email"
             android:inputType="text"
             android:singleLine="true"
             android:textColorHint="#0099FF"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/usernameEditTxt"
-            tools:ignore="MissingConstraints" />
+            android:textColor="#0099FF"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/passwordEditTxt"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_below="@+id/emailEditTxt"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/password"
             android:drawablePadding="16dp"
             android:paddingStart="16dp"
-            android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
             android:singleLine="true"
             android:textColorHint="#0099FF"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/emailEditTxt" />
+            android:textColor="#0099FF"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/reenterPassEditTxt"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_below="@+id/passwordEditTxt"
+            android:layout_marginBottom="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/password"
             android:drawablePadding="16dp"
             android:paddingStart="16dp"
-            android:ems="10"
-            android:hint="Renter Password"
+            android:hint="Re-enter Password"
             android:inputType="textPassword"
             android:singleLine="true"
             android:textColorHint="#0099FF"
+            android:textColor="#0099FF"
             android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/passwordEditTxt" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button_homepage"
             android:layout_width="160dp"
             android:layout_height="73dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="72dp"
+            android:layout_below="@id/reenterPassEditTxt"
             android:background="@drawable/edit_text_border"
+            android:layout_marginLeft="30dp"
             android:padding="15dp"
             android:text="BACK"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reenterPassEditTxt"
-            tools:ignore="MissingConstraints" />
+            android:textSize="20sp"/>
 
         <Button
             android:id="@+id/button_sign_up"
             android:layout_width="160dp"
             android:layout_height="73dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="72dp"
+            android:layout_below="@+id/reenterPassEditTxt"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"
             android:background="@drawable/edit_text_border"
             android:padding="15dp"
             android:text="SIGN UP"
             android:textSize="20sp"
-            app:layout_constraintLeft_toRightOf="@+id/button_homepage"
-            app:layout_constraintTop_toBottomOf="@+id/reenterPassEditTxt"
             app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
             tools:ignore="MissingConstraints" />
-
-        <ImageButton
-            android:id="@+id/imgChange"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="false"
-            android:src="@drawable/ic_settings_24dp"
-            app:iconSize="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="#FFFFFF" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
