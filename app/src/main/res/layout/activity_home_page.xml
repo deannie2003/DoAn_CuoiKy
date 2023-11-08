@@ -137,6 +137,11 @@
         android:layout_marginBottom="198dp"
         android:background="@color/cardview_shadow_end_color"
         android:text="Forgot your password?"
+<<<<<<< HEAD
+        android:textColor="@color/black"/>
+
+=======
         android:textColor="@color/black" />
     tools:ignore="MissingConstraints" />
+>>>>>>> 43f2b715192ed3078dae3ed36525d7632019c149
 </RelativeLayout>
