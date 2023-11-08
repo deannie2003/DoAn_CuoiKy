@@ -39,6 +39,8 @@
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/name"
             android:drawablePadding="16dp"
+            android:paddingStart="16dp"
+
             android:ems="10"
             android:fadeScrollbars="false"
             android:hint="Username"
@@ -62,6 +64,8 @@
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/email"
             android:drawablePadding="16dp"
+            android:paddingStart="16dp"
+
             android:ems="10"
             android:fadeScrollbars="false"
             android:hint="Email"
@@ -83,6 +87,8 @@
             android:background="@drawable/edit_text_border"
             android:drawableStart="@drawable/password"
             android:drawablePadding="16dp"
+            android:paddingStart="16dp"
+
             android:ems="10"
             android:hint="Password"
             android:inputType="text"
