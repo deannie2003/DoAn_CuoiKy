@@ -15,17 +15,19 @@
         android:layout_alignParentTop="true">
 
         <TextView
-            tools:ignore="MissingConstraints"
             android:id="@+id/titleSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="112dp"
             android:text="SIGN IN"
-            android:textColor="#0c58ab"
+            android:textColor="#0099FF"
             android:textColorHighlight="@color/accent_color"
             android:textSize="48sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="109dp" />
 
         <EditText
@@ -42,7 +44,7 @@
             android:hint="Username"
             android:inputType="text"
             android:singleLine="true"
-            android:textColorHint="#0c58ab"
+            android:textColorHint="#0099FF"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +67,7 @@
             android:hint="Email"
             android:inputType="text"
             android:singleLine="true"
-            android:textColorHint="#0c58ab"
+            android:textColorHint="#0099FF"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +87,7 @@
             android:hint="Password"
             android:inputType="text"
             android:singleLine="true"
-            android:textColorHint="#0c58ab"
+            android:textColorHint="#0099FF"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
