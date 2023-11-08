@@ -26,7 +26,8 @@ public class homePageActivity extends AppCompatActivity {
 
     private Button btn,btn1;
     private TextView txt_or;
-    private ImageButton img,img_homepage;
+    private ImageButton img;
+    private ImageView img_homepage;
 
     boolean isChanged = false;
 
