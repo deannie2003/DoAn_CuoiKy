@@ -105,21 +105,22 @@
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/password"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="10dp" />
+            tools:layout_editor_absoluteX="27dp" />
 
         <Button
             android:id="@+id/button_sign_in"
             android:layout_width="160dp"
             android:layout_height="73dp"
+            android:layout_marginLeft="44dp"
             android:layout_marginTop="100dp"
             android:background="@drawable/edit_text_border"
             android:padding="15dp"
             android:text="SIGN IN"
             android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@+id/button_homepage"
             app:layout_constraintTop_toBottomOf="@id/password"
             app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="212dp" />
+            tools:ignore="MissingConstraints" />
 
         <ImageButton
             android:id="@+id/imgChange"
