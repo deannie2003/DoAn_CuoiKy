@@ -40,7 +40,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="-66dp"
-        android:src="@drawable/App_logo_1"
+        android:src="@drawable/app_logo"
         tools:layout_editor_absoluteY="56dp" />
 
     <ImageButton
