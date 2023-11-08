@@ -59,7 +59,7 @@ public class sign_up_activity extends AppCompatActivity {
         email = findViewById(R.id.emailEditTxt);
         password = findViewById(R.id.passwordEditTxt);
         re_password = findViewById(R.id.reenterPassEditTxt);
-        btn_register = findViewById(R.id.button_sign_in);
+        btn_register = findViewById(R.id.button_sign_up);
         btn_back = findViewById(R.id.button_homepage);
         img_change = findViewById(R.id.imgChange);
         txt_reg = findViewById(R.id.registerTxt);
