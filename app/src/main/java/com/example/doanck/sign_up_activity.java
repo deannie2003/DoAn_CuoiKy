@@ -66,6 +66,7 @@ public class sign_up_activity extends AppCompatActivity {
             }
         });
 
+
         username = findViewById(R.id.usernameEditTxt);
         email = findViewById(R.id.emailEditTxt);
         password = findViewById(R.id.passwordEditTxt);
@@ -100,7 +101,6 @@ public class sign_up_activity extends AppCompatActivity {
                         for (String cookie : cookieValues) {
                             Cookie.append(cookie).append(";");
                         }
-
 
                         if (response.code() == 200) {
                             String RegForm_URL = "https://uiot.ixxc.dev" + extractFeature(responseBody,"a", "href");
