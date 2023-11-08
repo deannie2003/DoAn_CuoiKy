@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/loginBg"
-        android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_width="410dp"
+        android:layout_height="343dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -23,13 +23,16 @@
         android:id="@+id/imgChange"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:contentDescription="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="4dp"
-        android:contentDescription="null"
+        android:src="@drawable/ic_settings_24dp"
+        app:iconSize="25dp"
+        app:tint="#FFFFFF"
+        android:background="@drawable/btn_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_7" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/registerTxt"
@@ -37,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="REGISTER"
-        android:textColor="@color/design_default_color_primary"
+        android:textColor="@color/accent_color"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +60,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#3B608C"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerTxt" />
@@ -75,7 +78,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#3B608C"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +97,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#3B608C"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +115,7 @@
         android:hint="Re-enter the password"
         android:inputType="text"
         android:textColorHint="#3B608C"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,28 +134,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/reenterPassEditTxt">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/backBtn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
+            android:padding="15dp"
+            app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+            app:backgroundTint="@color/accent_color"
             android:text="BACK"
-            android:textSize="17sp"
             android:textColor="@color/white" />
 
         <Space
             android:layout_width="50dp"
             android:layout_height="match_parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/signupBtn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
+            android:padding="15dp"
+            app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+            app:backgroundTint="@color/accent_color"
             android:text="SIGN UP"
-            android:textSize="17sp"
+
             android:textColor="@color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

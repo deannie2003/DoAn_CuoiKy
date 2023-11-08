@@ -1,13 +1,10 @@
 package com.example.doanck;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +12,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+
+
 
 import java.io.IOException;
 import java.util.List;
@@ -31,12 +28,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class sign_up_activity extends AppCompatActivity {
-
     EditText username, email, password, re_password;
-    Button btn_register, btn_back;
-    ImageView img_change;
-    TextView txt_reg;
-    boolean isChanged = false;
+    Button btn_register;
 
     public String extractFeature(String html, String tag, String attribute) {
         Document document = Jsoup.parse(html);
@@ -54,31 +47,12 @@ public class sign_up_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(sign_up_activity.this ,homePageActivity.class);
-                startActivity(intent);
-            }
-        });
-        img_change.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ChangeLanguage();
-            }
-        });
-
 
         username = findViewById(R.id.usernameEditTxt);
         email = findViewById(R.id.emailEditTxt);
         password = findViewById(R.id.passwordEditTxt);
         re_password = findViewById(R.id.reenterPassEditTxt);
         btn_register = findViewById(R.id.signupBtn);
-        btn_back = findViewById(R.id.backBtn);
-        img_change = findViewById(R.id.imgChange);
-        txt_reg = findViewById(R.id.registerTxt);
-
-
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +77,7 @@ public class sign_up_activity extends AppCompatActivity {
                         for (String cookie : cookieValues) {
                             Cookie.append(cookie).append(";");
                         }
+
 
                         if (response.code() == 200) {
                             String RegForm_URL = "https://uiot.ixxc.dev" + extractFeature(responseBody,"a", "href");
@@ -165,28 +140,5 @@ public class sign_up_activity extends AppCompatActivity {
                 });
             }
         });
-    }
-    private void ChangeLanguage() {
-        isChanged = !isChanged;
-        if (isChanged) {
-            img_change.setImageResource(R.drawable.icon_vietnam);
-            username.setText("Tên người dùng");
-            email.setText("Email");
-            password.setText("Mật khẩu");
-            re_password.setText("Nhập lại mật khẩu");
-            btn_register.setText("ĐĂNG KÝ");
-            btn_back.setText("QUAY VỀ");
-            txt_reg.setText("ĐĂNG KÝ");
-        } else {
-            img_change.setImageResource(R.drawable.icon_uk);
-            username.setText("Username");
-            email.setText("Email");
-            password.setText("Password");
-            re_password.setText("Re-enter the password");
-            btn_register.setText("SIGN UP");
-            btn_back.setText("BACK");
-            txt_reg.setText("REGISTER");
-
-        }
     }
 }
