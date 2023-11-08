@@ -141,5 +141,5 @@
         android:background="@color/cardview_shadow_end_color"
         android:text="Forgot your password?"
         android:textColor="@color/black"/>
-    tools:ignore="MissingConstraints" />
+
 </RelativeLayout>
