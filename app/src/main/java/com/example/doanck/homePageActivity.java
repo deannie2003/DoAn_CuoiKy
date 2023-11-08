@@ -1,5 +1,6 @@
 package com.example.doanck;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,8 +25,8 @@ import com.google.android.material.button.MaterialButton;
 public class homePageActivity extends AppCompatActivity {
 
     private Button btn,btn1;
-    private TextView txt_title, txt_or;
-    private ImageButton img;
+    private TextView txt_or;
+    private ImageButton img,img_homepage;
 
     boolean isChanged = false;
 
@@ -60,11 +61,12 @@ public class homePageActivity extends AppCompatActivity {
             }
         });
     }
+    @SuppressLint("WrongViewCast")
     private void LoadElement(){
         btn_sign_in = findViewById(R.id.button);
         btn_sign_up = findViewById(R.id.button2);
         img = findViewById(R.id.imageButton);
-        txt_title = findViewById(R.id.HomepageTxt);
+        img_homepage = findViewById(R.id.HomepageImg);
         txt_or = findViewById(R.id.textView2);
         btn_google = findViewById(R.id.button3);
         btn_reset = findViewById(R.id.button4);
@@ -74,7 +76,7 @@ public class homePageActivity extends AppCompatActivity {
         if(isChanged){
             img.setBackgroundResource(R.drawable.icon_vietnam);
             img.setImageDrawable(null);
-            txt_title.setText("Dự báo khí tượng");
+
             btn_sign_in.setText("ĐĂNG NHẬP");
             txt_or.setText("HOẶC");
             btn_sign_up.setText("ĐĂNG KÝ");
@@ -83,7 +85,7 @@ public class homePageActivity extends AppCompatActivity {
         }else{
             img.setBackgroundResource(R.drawable.icon_uk);
             img.setImageDrawable(null);
-            txt_title.setText("Air Quality Monitoring");
+
             btn_sign_in.setText("SIGN IN");
             txt_or.setText("OR");
             btn_sign_up.setText("SIGN UP");

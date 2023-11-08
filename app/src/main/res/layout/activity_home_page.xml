@@ -33,7 +33,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/HomepageTxt"
+        android:id="@+id/HomepageImg"
         android:layout_width="338dp"
         android:layout_height="326dp"
         android:layout_alignParentTop="true"
