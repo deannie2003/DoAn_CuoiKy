@@ -101,7 +101,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="319dp" />
-
+    
     <Button
         android:id="@+id/button_homepage"
         android:layout_width="160dp"
@@ -150,5 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#FFFFFF" />
+
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.doanck;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,8 +25,8 @@ import com.google.android.material.button.MaterialButton;
 public class homePageActivity extends AppCompatActivity {
 
     private Button btn,btn1;
-    private TextView txt_title, txt_or;
-    private ImageButton img;
+    private TextView txt_or;
+    private ImageButton img,img_homepage;
 
     boolean isChanged = false;
 
@@ -60,10 +61,13 @@ public class homePageActivity extends AppCompatActivity {
             }
         });
     }
+    @SuppressLint("WrongViewCast")
     private void LoadElement(){
         btn_sign_in = findViewById(R.id.button);
         btn_sign_up = findViewById(R.id.button2);
         img = findViewById(R.id.imageButton);
+
+        img_homepage = findViewById(R.id.HomepageImg);
         txt_or = findViewById(R.id.textView2);
         btn_google = findViewById(R.id.button3);
         btn_reset = findViewById(R.id.button4);
