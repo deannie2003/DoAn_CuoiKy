@@ -26,7 +26,7 @@
     <ImageView
         android:id="@+id/HomePage"
         android:layout_width="match_parent"
-        android:layout_height="194dp"
+        android:layout_height="229dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,8 +37,8 @@
 
     <ImageView
         android:id="@+id/HomepageImg"
-        android:layout_width="338dp"
-        android:layout_height="326dp"
+        android:layout_width="355dp"
+        android:layout_height="341dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="24dp"
@@ -49,27 +49,28 @@
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="48dp"
-        android:contentDescription="false"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/btn_background"
+        android:contentDescription="false"
         android:src="@drawable/ic_settings_24dp"
         app:iconSize="25dp"
-        app:tint="#FFFFFF"
-        android:background="@drawable/btn_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFFFFF" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="208dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="251dp"
         android:layout_marginRight="120dp"
+        android:layout_below="@+id/HomePage"
         android:padding="20dp"
         android:text="SIGN IN"
         app:backgroundTint="@color/accent_color"
@@ -82,65 +83,51 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/textView2"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="375dp"
+        android:layout_marginTop="10dp"
         android:padding="20dp"
-        android:text="CREATE AN ACCOUNT !"
+        android:text="SIGN UP"
         app:backgroundTint="@color/accent_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544"
         app:shapeAppearance="?attr/shapeAppearanceCornerMedium" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="289dp"
+        android:layout_below="@id/button2"
         android:padding="20dp"
         android:text="CONTINUE WITH GOOGLE"
         app:backgroundTint="@color/accent_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
-        tools:layout_editor_absoluteY="451dp" />
+        app:shapeAppearance="?attr/shapeAppearanceCornerMedium"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="344dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/button"
         android:text="OR"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491" />
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/button3"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="198dp"
         android:background="@color/cardview_shadow_end_color"
         android:text="Forgot your password?"
-        android:textColor="@color/black"/>
         android:textColor="@color/black" />
+    android:textColor="@color/black" />
     tools:ignore="MissingConstraints" />
 </RelativeLayout>

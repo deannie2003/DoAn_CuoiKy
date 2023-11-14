@@ -24,7 +24,7 @@ public class sign_in_activity extends AppCompatActivity {
     Button bttn_sign_in, bttn_back_to_homePage;
     EditText userName,Email,Password;
     TextView txt_sign_in;
-    private ImageView img_change;
+
     boolean isChanged = false;
 
     @Override
@@ -32,12 +32,7 @@ public class sign_in_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         loadElement();
-        img_change.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ChangeLanguage();
-            }
-        });
+
 
 
         //nhấn button trở về home page
@@ -65,31 +60,10 @@ public class sign_in_activity extends AppCompatActivity {
         userName = findViewById(R.id.user_name);
         Email = findViewById(R.id.email);
         Password = findViewById(R.id.password);
-        img_change = findViewById(R.id.imgChange);
+
         txt_sign_in = findViewById(R.id.titleSignin);
     }
-    private void ChangeLanguage(){
-        isChanged =!isChanged;
-        if(isChanged){
-            img_change.setBackgroundResource(R.drawable.icon_vietnam);
-            img_change.setImageDrawable(null);
-            bttn_sign_in.setText("ĐĂNG NHẬP");
-            bttn_back_to_homePage.setText("QUAY VỀ");
-            Email.setText("Email");
-            Password.setText("Mật khẩu");
-            userName.setText("Tên người dùng");
-            txt_sign_in.setText("ĐĂNG NHẬP");
-        }else{
-            img_change.setBackgroundResource(R.drawable.icon_uk);
-            img_change.setImageDrawable(null);
-            bttn_sign_in.setText("SIGN IN");
-            bttn_back_to_homePage.setText("BACK");
-            Email.setText("Email");
-            Password.setText("Password");
-            userName.setText("Username");
-            txt_sign_in.setText("SIGN IN");
-        }
-    }
+
     //Hàm để xử lý đăng nhập
     private void Signin(){
         ApiInterface.apiInterface.authenticate("openremote",userName.getText().toString(),Password.getText().toString(),Email.getText().toString(),"password")
