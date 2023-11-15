@@ -7,6 +7,7 @@
     android:background="@drawable/back_gground"
     tools:context=".sign_in_activity" >
 
+
     <TextView
         android:id="@+id/titleSignin"
         android:layout_width="match_parent"
