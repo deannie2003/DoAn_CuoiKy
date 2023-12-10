@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_gground"
+    android:background="@drawable/bgr2"
     tools:context=".sign_in_activity" >
 
 
@@ -15,19 +15,19 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="SIGN IN"
-            android:layout_marginTop="100dp"
-            android:textColor="#0099FF"
+            android:layout_marginTop="130dp"
+            android:textColor="@color/accent_color"
             android:textColorHighlight="@color/accent_color"
-            android:textSize="48sp"
+            android:textSize="70sp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_marginStart="60dp"/>
 
         <EditText
             android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_below="@id/titleSignin"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -39,8 +39,8 @@
             android:inputType="text"
             android:paddingStart="16dp"
             android:singleLine="true"
-            android:textColorHint="#0099FF"
-            android:textColor="#0099FF"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
             android:textSize="22sp"
             android:textStyle="bold"/>
 
@@ -60,8 +60,8 @@
             android:inputType="text"
             android:paddingStart="16dp"
             android:singleLine="true"
-            android:textColorHint="#0099FF"
-            android:textColor="#0099FF"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
             android:textSize="22sp"
             android:textStyle="bold"/>
 
@@ -80,8 +80,8 @@
             android:inputType="textPassword"
             android:paddingStart="16dp"
             android:singleLine="true"
-            android:textColorHint="#0099FF"
-            android:textColor="#0099FF"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
             android:textSize="22sp"
             android:textStyle="bold"/>
 
@@ -89,7 +89,7 @@
             android:id="@+id/button_homepage"
             android:layout_width="160dp"
             android:layout_height="73dp"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/btn_background"
             android:padding="15dp"
             android:text="BACK"
             android:layout_marginLeft="30dp"
@@ -103,7 +103,7 @@
             android:layout_marginRight="30dp"
             android:layout_below="@id/password"
             android:layout_alignParentRight="true"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/btn_background"
             android:padding="15dp"
             android:text="SIGN IN"
             android:textSize="20sp" />

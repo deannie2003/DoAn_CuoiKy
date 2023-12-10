@@ -1,6 +1,10 @@
 package com.example.doanck;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,29 +18,46 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.doanck.API.ApiInterface;
 import com.example.doanck.Model.AssetToken;
 
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
 public class sign_in_activity extends AppCompatActivity {
+    SharedPreferences prefs;
 
-    Button bttn_sign_in, bttn_back_to_homePage;
+    Button btn_sign_in, btn_back_to_homePage;
     EditText userName,Email,Password;
     TextView txt_sign_in;
 
     boolean isChanged = false;
+    private void setLanguage() {
+        boolean isVietnamese = prefs.getBoolean("isVietnamese", false);
+        txt_sign_in.setText(isVietnamese ? "ĐĂNG NHẬP" :"SIGN IN");
+        btn_sign_in.setText(isVietnamese ? "ĐĂNG NHẬP":"SIGN IN");
+        btn_back_to_homePage.setText(isVietnamese ? "QUAY LẠI":"BACK");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setLanguage();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         loadElement();
-
+        prefs = getSharedPreferences("LanguageSettings", MODE_PRIVATE);
+        setLanguage();
 
 
         //nhấn button trở về home page
-        bttn_back_to_homePage.setOnClickListener(new View.OnClickListener() {
+        btn_back_to_homePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(sign_in_activity.this ,homePageActivity.class);
@@ -44,7 +65,7 @@ public class sign_in_activity extends AppCompatActivity {
             }
         });
         // nhấn button xử lý => vào dashboard/thông báo lỗi
-        bttn_sign_in.setOnClickListener(new View.OnClickListener(){
+        btn_sign_in.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Signin();
@@ -55,8 +76,8 @@ public class sign_in_activity extends AppCompatActivity {
 
     //Hàm để load các phần tử trong UI
     private void loadElement(){
-        bttn_sign_in = findViewById(R.id.button_sign_in);
-        bttn_back_to_homePage = findViewById(R.id.button_homepage);
+        btn_sign_in = findViewById(R.id.button_sign_in);
+        btn_back_to_homePage = findViewById(R.id.button_homepage);
         userName = findViewById(R.id.user_name);
         Email = findViewById(R.id.email);
         Password = findViewById(R.id.password);
@@ -74,8 +95,10 @@ public class sign_in_activity extends AppCompatActivity {
                         AssetToken assetToken = response.body();
                         String token = assetToken.getAccessToken();
                         if(token!= null){
+                            String username = userName.getText().toString();
                             Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
+                            intent.putExtra("username", username);
                             startActivity(intent);
                         }
                         else{
@@ -87,7 +110,7 @@ public class sign_in_activity extends AppCompatActivity {
                         Toast.makeText(sign_in_activity.this, "Call API lỗi !!", Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
+
 
 }

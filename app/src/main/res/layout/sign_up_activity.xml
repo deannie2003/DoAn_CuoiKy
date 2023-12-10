@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_gground"
+    android:background="@drawable/bgr2"
     tools:context=".sign_up_activity" >
 
 
@@ -13,16 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="50dp"
             android:text="SIGN UP"
-            android:textColor="#0099FF"
+            android:textColor="@color/accent_color"
             android:textColorHighlight="@color/accent_color"
-            android:textSize="48sp"
+            android:textSize="70sp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="96dp"
             tools:layout_editor_absoluteY="214dp"
-            android:gravity="center"/>
+            android:layout_marginStart="30dp"/>
 
         <EditText
             android:id="@+id/usernameEditTxt"
@@ -40,8 +40,8 @@
             android:hint="Username"
             android:inputType="text"
             android:singleLine="true"
-            android:textColorHint="#0099FF"
-            android:textColor="#0099FF"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -61,9 +61,10 @@
             android:hint="Email"
             android:inputType="text"
             android:singleLine="true"
-            android:textColorHint="#0099FF"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
             android:textSize="22sp"
-            android:textColor="#0099FF"
+
             android:textStyle="bold" />
 
         <EditText
@@ -81,9 +82,10 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:textColorHint="#0099FF"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
             android:textSize="22sp"
-            android:textColor="#0099FF"
+
             android:textStyle="bold" />
 
         <EditText
@@ -101,8 +103,8 @@
             android:hint="Re-enter Password"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:textColorHint="#0099FF"
-            android:textColor="#0099FF"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -111,7 +113,7 @@
             android:layout_width="160dp"
             android:layout_height="73dp"
             android:layout_below="@id/reenterPassEditTxt"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/btn_background"
             android:layout_marginLeft="30dp"
             android:padding="15dp"
             android:text="BACK"
@@ -124,7 +126,7 @@
             android:layout_below="@+id/reenterPassEditTxt"
             android:layout_marginRight="30dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/btn_background"
             android:padding="15dp"
             android:text="SIGN UP"
             android:textSize="20sp"

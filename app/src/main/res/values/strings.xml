@@ -10,5 +10,18 @@
     <string name="Re_enter">Re-enter the password</string>
     <string name="back">BACK</string>
     <string name="register">REGISTER</string>
+    //Headings
+    <string name="app_name">Weather\nApplication !</string>
 
+
+    <string name="heading_one">Chào mừng bạn đến với WeaApp !</string>
+    <string name="heading_two">Bản đồ vị trí</string>
+    <string name="heading_three">Cập nhật thông tin liên quan về thời tiết</string>
+    <string name="heading_fourth">Thông số biểu đồ</string>
+
+    //Description
+    <string name="desc_one">Đây là ứng dụng được phát triển bới nhóm 4 lớp để theo dõi tình hình khí tượng. </string>
+    <string name="desc_two">Theo dõi các thông tin liên quan về thời tiết theo từng vị trí.</string>
+    <string name="desc_three">Hiển thị chi tiết về thông tin thời tiết như nhiệt độ, độ ẩm hiện tại và mức độ ô nhiễm.</string>
+    <string name="desc_fourth">Dễ dàng theo dõi thông số biểu đồ theo thời gian.</string>
 </resources>
