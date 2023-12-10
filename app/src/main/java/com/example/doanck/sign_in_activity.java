@@ -1,6 +1,10 @@
 package com.example.doanck;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.doanck.API.ApiInterface;
 import com.example.doanck.Model.AssetToken;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
