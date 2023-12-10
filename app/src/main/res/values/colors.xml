@@ -3,4 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="accent_color">#6750a4</color>
+    //onboarding colors
+    <color name="background">#F0F4F3</color>
+    <color name="buttontext">@color/accent_color</color>
+
+    //indicator color
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#50C2C9</color>
 </resources>

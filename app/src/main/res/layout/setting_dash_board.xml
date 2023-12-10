@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bgrrrr"
+    tools:context=".dash_board_activity">
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tab_layout"
+        android:background="#F0ECF6"
+        android:layout_alignParentBottom="true"
+        android:elevation="6dp">
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/home_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_home_24"
+            android:text="Home"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/setting_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_settings_24dp"
+            android:text="Setting" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/map_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_map_24"
+            android:text="Map"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/account_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_account_circle_24"
+            android:text="Account"/>
+    </com.google.android.material.tabs.TabLayout>
+
+    <TextView
+        android:id="@+id/hi_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:drawableStart="@drawable/baseline_person_24"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hi_user"
+        android:layout_above="@+id/tab_layout"/>
+
+</RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_gground"
+    android:background="@drawable/bgr2"
     tools:context=".sign_in_activity" >
 
 
@@ -26,6 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="109dp" />
+
 
     <EditText
         android:id="@+id/user_name"
@@ -137,6 +138,92 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="585dp" />
 
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@id/titleSignin"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/name"
+            android:drawablePadding="16dp"
+            android:fadeScrollbars="false"
+            android:hint="Username"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:singleLine="true"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@id/user_name"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/email"
+            android:drawablePadding="16dp"
+            android:fadeScrollbars="false"
+            android:hint="Email"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:singleLine="true"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@id/email"
+            android:layout_marginBottom="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="16dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="16dp"
+            android:singleLine="true"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button_homepage"
+            android:layout_width="160dp"
+            android:layout_height="73dp"
+            android:background="@drawable/btn_background"
+            android:padding="15dp"
+            android:text="BACK"
+            android:layout_marginLeft="30dp"
+            android:layout_below="@id/password"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/button_sign_in"
+            android:layout_width="160dp"
+            android:layout_height="73dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@id/password"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_background"
+            android:padding="15dp"
+            android:text="SIGN IN"
+            android:textSize="20sp" />
     <ImageButton
         android:id="@+id/imgChange"
         android:layout_width="50dp"

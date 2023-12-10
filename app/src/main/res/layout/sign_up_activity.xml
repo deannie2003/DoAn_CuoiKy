@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_gground"
+    android:background="@drawable/bgr2"
     tools:context=".sign_up_activity" >
 
     <TextView
@@ -26,6 +26,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="93dp" />
 
+<<<<<<< HEAD
     <EditText
         android:id="@+id/usernameEditTxt"
         android:layout_width="match_parent"
@@ -182,6 +183,107 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#FFFFFF" />
+=======
+        <TextView
+            android:id="@+id/registerTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="50dp"
+            android:text="SIGN UP"
+            android:textColor="@color/accent_color"
+            android:textColorHighlight="@color/accent_color"
+            android:textSize="70sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="96dp"
+            tools:layout_editor_absoluteY="214dp"
+            android:layout_marginStart="30dp"/>
+
+        <EditText
+            android:id="@+id/usernameEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/name"
+            android:drawablePadding="16dp"
+            android:layout_below="@+id/registerTxt"
+            android:paddingStart="16dp"
+            android:fadeScrollbars="false"
+            android:hint="Username"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/usernameEditTxt"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/email"
+            android:drawablePadding="16dp"
+            android:paddingStart="16dp"
+            android:fadeScrollbars="false"
+            android:hint="Email"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/passwordEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@+id/emailEditTxt"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="16dp"
+            android:paddingStart="16dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/reenterPassEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@+id/passwordEditTxt"
+            android:layout_marginBottom="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edit_text_border"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="16dp"
+            android:paddingStart="16dp"
+            android:hint="Re-enter Password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColorHint="@color/accent_color"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+>>>>>>> 3ec15a0633039bd3e3944de1420744b0f10add8d
 
         <Button
             android:id="@+id/button_homepage"
@@ -192,12 +294,28 @@
             android:layout_marginTop="76dp"
 
             android:layout_below="@id/reenterPassEditTxt"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/btn_background"
             android:layout_marginLeft="30dp"
             android:padding="15dp"
             android:text="BACK"
             android:textSize="20sp"/>
 
+<<<<<<< HEAD
 
+=======
+        <Button
+            android:id="@+id/button_sign_up"
+            android:layout_width="160dp"
+            android:layout_height="73dp"
+            android:layout_below="@+id/reenterPassEditTxt"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_background"
+            android:padding="15dp"
+            android:text="SIGN UP"
+            android:textSize="20sp"
+            app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+            tools:ignore="MissingConstraints" />
+>>>>>>> 3ec15a0633039bd3e3944de1420744b0f10add8d
 
 </RelativeLayout>
