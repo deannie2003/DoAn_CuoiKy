@@ -70,7 +70,7 @@ public class sign_up_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
         prefs = getSharedPreferences("LanguageSettings", MODE_PRIVATE);
-        setLanguage();
+
         username = findViewById(R.id.usernameEditTxt);
         email = findViewById(R.id.emailEditTxt);
         password = findViewById(R.id.passwordEditTxt);
@@ -78,6 +78,8 @@ public class sign_up_activity extends AppCompatActivity {
         btn_register = findViewById(R.id.button_sign_up);
         btn_back = findViewById(R.id.button_homepage);
         txt_reg = findViewById(R.id.registerTxt);
+
+        setLanguage();
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
