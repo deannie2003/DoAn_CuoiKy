@@ -1,6 +1,13 @@
 package com.example.doanck;
 
 import android.annotation.SuppressLint;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -118,5 +125,6 @@ public class homePageActivity extends AppCompatActivity {
         btn_google = findViewById(R.id.google_btn);
         btn_forgot = findViewById(R.id.forgot_pw);
     }
+
 
 }
