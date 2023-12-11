@@ -53,7 +53,6 @@ public class homePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
         setContentView(R.layout.activity_home_page);
         LoadElement();
 
@@ -117,6 +116,15 @@ public class homePageActivity extends AppCompatActivity {
     }
 
     @SuppressLint("WrongViewCast")
+    private void LoadElement(){
+        btn_sign_in = findViewById(R.id.sign_in_btn);
+        btn_sign_up = findViewById(R.id.sign_up_btn);
+        img_language = findViewById(R.id.language_chance);
+        img_homepage = findViewById(R.id.HomepageImg);
+        txt_or = findViewById(R.id.or_txt);
+        btn_google = findViewById(R.id.google_btn);
+        btn_forgot = findViewById(R.id.forgot_pw);
+    }
 
 
 }

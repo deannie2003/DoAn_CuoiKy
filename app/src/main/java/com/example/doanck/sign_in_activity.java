@@ -1,10 +1,6 @@
 package com.example.doanck;
 
-
-import android.app.Activity;
-
 import android.content.Context;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -114,6 +110,7 @@ public class sign_in_activity extends AppCompatActivity {
                         Toast.makeText(sign_in_activity.this, "Call API lỗi !!", Toast.LENGTH_SHORT).show();
                     }
                 });
+
     }
 
 

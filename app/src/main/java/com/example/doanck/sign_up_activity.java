@@ -1,13 +1,7 @@
 package com.example.doanck;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-<<<<<<< HEAD
-import android.content.res.Configuration;
-import android.content.res.Resources;
-=======
->>>>>>> 3ec15a0633039bd3e3944de1420744b0f10add8d
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +21,6 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -77,7 +70,7 @@ public class sign_up_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
         prefs = getSharedPreferences("LanguageSettings", MODE_PRIVATE);
-        setLanguage();
+
         username = findViewById(R.id.usernameEditTxt);
         email = findViewById(R.id.emailEditTxt);
         password = findViewById(R.id.passwordEditTxt);
@@ -85,6 +78,8 @@ public class sign_up_activity extends AppCompatActivity {
         btn_register = findViewById(R.id.button_sign_up);
         btn_back = findViewById(R.id.button_homepage);
         txt_reg = findViewById(R.id.registerTxt);
+
+        setLanguage();
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,5 +203,4 @@ public class sign_up_activity extends AppCompatActivity {
             }
         });
     }
-
 }
