@@ -15,67 +15,76 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="18sp"/>
-
-    <ImageView
-        android:id="@+id/cloud"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_below="@+id/hi_user"
-        android:layout_marginStart="25dp"
-        />
-
-    <RelativeLayout
-        android:id="@+id/lo"
+    <LinearLayout
+        android:background="@drawable/dash_board_background"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/hi_user"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="40dp"
-        android:gravity="center"
-        android:layout_marginEnd="25dp"
-        android:layout_toRightOf="@+id/cloud">
+        android:id="@+id/ln1">
+        <ImageView
+            android:id="@+id/cloud"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/cloud_moon"
+            android:alpha="0.8"
+            android:layout_below="@+id/hi_user"
 
-        <TextView
-            android:id="@+id/calender"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Wednesday"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            />
 
-        <TextView
-            android:id="@+id/heat"
+        <RelativeLayout
+            android:id="@+id/lo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/calender"
-
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="28dp"
+            android:layout_height="180dp"
+            android:layout_below="@+id/hi_user"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
             android:gravity="center"
-            android:text="27°C"
-            android:textColor="@color/black"
-            android:textSize="40sp" />
-    </RelativeLayout>
+            android:layout_toRightOf="@+id/cloud">
+
+            <TextView
+                android:id="@+id/calender"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="0dp"
+                android:gravity="center"
+                android:text="Wednesday"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/heat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calender"
+                android:layout_marginStart="27dp"
+                android:layout_marginEnd="28dp"
+                android:gravity="center"
+                android:text="27°C"
+                android:textColor="@color/black"
+                android:textSize="40sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/sun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="20dp"
-        android:layout_below="@+id/cloud">
+        android:layout_below="@+id/ln1">
         <LinearLayout
             android:layout_width="180dp"
             android:layout_height="140dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="@drawable/dash_board_background">
+            android:background="@drawable/dash_board_background"
+            >
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -84,13 +93,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/sunrise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Sunrise"
-                    android:textSize="20sp" />
+
 
                 <TextView
                     android:id="@+id/time_sunrise"
@@ -98,17 +101,30 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/sunrise"
                     android:textColor="@color/black"
-                    android:text="06:09"
+                    android:text="Wind Speed"
+
                     android:textStyle="bold" />
 
                 <ImageView
+
                     android:id="@+id/img_sunrise"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_below="@+id/time_sunrise"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/sunrise" />
+                    android:src="@drawable/wind_speed" />
+                <TextView
+                    android:id="@+id/time_sunrisees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sunrise"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    android:text="11 km/h"
+
+                     />
+
             </LinearLayout>
 
             <LinearLayout
@@ -118,21 +134,14 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/sunset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="Sunset"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+
 
                 <TextView
                     android:id="@+id/time_sunset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="17:39"
+                    android:text="Speed Direction"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -141,7 +150,17 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/sunset" />
+                    android:src="@drawable/wind_direction" />
+                <TextView
+                    android:id="@+id/time_sunrisee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sunrise"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    android:text="11 km/h"
+
+                    />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -151,12 +170,12 @@
         android:layout_height="140dp"
         android:layout_below="@+id/sun"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/weather_frg_background"
+        android:background="@drawable/dash_board_background"
         android:orientation="horizontal"
-        android:alpha="0.2">
+        >
 
         <TextView
             android:id="@+id/rain_all"
