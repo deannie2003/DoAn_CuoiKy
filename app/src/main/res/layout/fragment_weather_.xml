@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bgrrrr"
-    tools:context=".dash_board_activity">
+    android:background="@drawable/weather_frg_background"
+    tools:context=".Weather_Fragment">
     <TextView
         android:id="@+id/hi_user"
         android:layout_width="wrap_content"
@@ -20,9 +20,9 @@
         android:id="@+id/cloud"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:src="@drawable/clouds"
         android:layout_below="@+id/hi_user"
-        android:layout_marginStart="25dp" />
+        android:layout_marginStart="25dp"
+        />
 
     <RelativeLayout
         android:id="@+id/lo"
@@ -37,17 +37,17 @@
 
         <TextView
             android:id="@+id/calender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
-            android:layout_marginStart="21dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="MonDay"
-            android:textStyle="bold"
+            android:text="Wednesday"
             android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/heat"
@@ -154,8 +154,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/dash_board_background"
-        android:orientation="horizontal">
+        android:background="@drawable/weather_frg_background"
+        android:orientation="horizontal"
+        android:alpha="0.2">
 
         <TextView
             android:id="@+id/rain_all"
@@ -191,4 +192,6 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
+
+
 </RelativeLayout>
