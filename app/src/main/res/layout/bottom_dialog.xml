@@ -51,6 +51,7 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:id="@+id/layoutShare"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -84,6 +85,7 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:id="@+id/layoutUpload"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -131,23 +133,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rainfall(mm)"
+            android:text="Temperature (°C)"
             android:layout_marginLeft="30dp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="15sp"/>
         <TextView
-            android:id="@+id/txtRainFall"
+            android:id="@+id/txtTempInfor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="75dp"
             android:layout_gravity="center"
-            android:textColor="@color/black"
             android:textSize="15sp"/>
 
     </LinearLayout>
+
     <LinearLayout
 
         android:orientation="horizontal"
@@ -163,13 +164,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Temperature (°C)"
+            android:text="Pressure (ATM)"
             android:layout_marginLeft="30dp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="15sp"/>
         <TextView
-            android:id="@+id/txtTempInfor"
+            android:id="@+id/txtPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""

@@ -60,6 +60,7 @@ import java.util.TimeZone;
  * create an instance of this fragment.
  */
 public class Chart_Fragment extends Fragment {
+
     private VideoView videoView;
     private boolean isVideoLooping = true; // Biến để kiểm soát việc lặp video
     // TODO: Rename parameter arguments, choose names that match
