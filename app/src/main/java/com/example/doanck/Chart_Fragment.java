@@ -1,23 +1,58 @@
 package com.example.doanck;
 
+
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Bundle;
 
+import android.app.DatePickerDialog;
+
+import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.example.doanck.API.APIClient;
 import com.example.doanck.API.ApiInterface;
+import com.example.doanck.Model.Datapoint;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputLayout;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import com.example.doanck.Model.Token;
+
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -187,7 +222,7 @@ public class Chart_Fragment extends Fragment {
 
     public void GetDataPointFromJson(String token,String fromTime, String toTime, String assetId,String attributeName) {
 
-        apiService= RetrofitClient.getClient().create(ApiService.class);
+        apiService = APIClient.getClient().create(ApiInterface.class);
         String json = "{ \"fromTimestamp\": 0, " +
                 "\"toTimestamp\": 0, " +
                 "\"fromTime\": \"" + fromTime + "\", " +
@@ -198,12 +233,12 @@ public class Chart_Fragment extends Fragment {
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), json);
 
         // Truyền các tham số cần thiết vào
-        Call<List<DataPoint>> call = apiService.getDataPoints("application/json", "Bearer " + token, "application/json", assetId,attributeName, requestBody);
-        call.enqueue(new Callback<List<DataPoint>>() {
+        Call<List<Datapoint>> call = apiService.getDataPoints("application/json", "Bearer " + token, "application/json", assetId, attributeName, requestBody);
+        call.enqueue(new Callback<List<Datapoint>>() {
             @Override
-            public void onResponse(Call<List<DataPoint>> call, Response<List<DataPoint>> response) {
+            public void onResponse(Call<List<Datapoint>> call, Response<List<Datapoint>> response) {
                 if (response.isSuccessful()) {
-                    List<DataPoint> dataPoints = response.body();
+                    List<Datapoint> dataPoints = response.body();
                     DrawLineChart(dataPoints);
                 } else {
                     // Xử lý lỗi
@@ -211,34 +246,26 @@ public class Chart_Fragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<DataPoint>> call, Throwable t) {
-                // Xử lý lỗi
+            public void onFailure(Call<List<Datapoint>> call, Throwable t) {
+
             }
         });
-
     }
 
-    private void DrawLineChart(List<DataPoint> dataPoints){
-
-        DataMarkerView mv = new DataMarkerView(getActivity(), R.layout.custom_marker_view);
-        chart.setMarker(mv);
-
+    private void DrawLineChart(List<Datapoint> dataPoints){
 
         List<Entry> entries = new ArrayList<>();
         for (int i =dataPoints.size()-1;i>=0;i--) {
-            // Chuyển đổi dữ liệu của bạn thành Entry và thêm vào danh sách
+            // Chuyển đổi dữ liệu thành Entry và thêm vào danh sách
             entries.add(new Entry(dataPoints.get(i).getX(), dataPoints.get(i).getY()));
         }
 
-
-
         LineDataSet lineDataSet = new LineDataSet(entries, "Nhiet do");
-        lineDataSet.setDrawValues(false);
 
         lineDataSet.setLineWidth(lineWidth);
         lineDataSet.setValueTextSize(valueTextSize);
-        lineDataSet.setValueTextColor(Color.WHITE);
-        lineDataSet.setCircleRadius(5f);
+
+
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
@@ -246,10 +273,7 @@ public class Chart_Fragment extends Fragment {
 
 
         XAxis xAxis = chart.getXAxis();
-        xAxis.setTextColor(Color.CYAN);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setAxisLineWidth(3f);
-        xAxis.setTextSize(14f);
         xAxis.setValueFormatter(new ValueFormatter() {
             private final SimpleDateFormat format = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
@@ -262,12 +286,8 @@ public class Chart_Fragment extends Fragment {
         YAxis rightAxis = chart.getAxisRight();
         rightAxis.setEnabled(false);
 
-
         YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setTextSize(14f);
-        leftAxis.setTextColor(Color.CYAN);
-        leftAxis.setGranularity(1f);
-        leftAxis.setAxisLineWidth(3f);
+        leftAxis.setGranularity(10f);
 
         chart.setData(data);
         chart.invalidate();

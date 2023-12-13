@@ -19,7 +19,7 @@ public class DataMarkerView extends MarkerView {
 
     public DataMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
-            tvContent = findViewById(R.id.tvContent);
+        tvContent = findViewById(R.id.tvContent);
     }
 
     @Override
