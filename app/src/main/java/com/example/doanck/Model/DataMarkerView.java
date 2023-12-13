@@ -15,17 +15,17 @@ import java.util.Locale;
 
 public class DataMarkerView extends MarkerView {
 
-    //private final TextView tvContent;
+    private final TextView tvContent;
 
     public DataMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
-        //tvContent = findViewById(R.id.tvContent);
+        tvContent = findViewById(R.id.tvContent);
     }
 
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
 
-        //tvContent.setText(String.valueOf(e.getY()));
+        tvContent.setText(String.valueOf(e.getY()));
         super.refreshContent(e, highlight);
     }
 
