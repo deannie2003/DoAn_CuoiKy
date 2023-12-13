@@ -65,12 +65,7 @@ public class sign_in_activity extends AppCompatActivity {
             }
         });
         // nhấn button xử lý => vào dashboard/thông báo lỗi
-        btn_sign_in.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Signin();
-            }
-        });
+        btn_sign_in.setOnClickListener(this::Signin);
     }
 
 
@@ -86,24 +81,27 @@ public class sign_in_activity extends AppCompatActivity {
     }
 
     //Hàm để xử lý đăng nhập
-    private void Signin(){
+    private void Signin(View v){
         ApiInterface.apiInterface.authenticate("openremote",userName.getText().toString(),Password.getText().toString(),Email.getText().toString(),"password")
                 .enqueue(new Callback<AssetToken>() {
                     //call API bat dong bo
                     @Override
                     public void onResponse(Call<AssetToken> call, Response<AssetToken> response) {
                         AssetToken assetToken = response.body();
-                        String token = assetToken.getAccessToken();
-                        if(token!= null){
-                            String username = userName.getText().toString();
-                            Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
-                            intent.putExtra("username", username);
-                            startActivity(intent);
+
+                        if (assetToken != null) {
+                            String token = assetToken.getAccessToken();
+                            if (token != null) {
+                                String username = userName.getText().toString();
+                                Toast.makeText(sign_in_activity.this, "Đăng Nhập Thành Công!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(sign_in_activity.this, dash_board_activity.class);
+                                intent.putExtra("username", username);
+                                startActivity(intent);
+                                return;
+                            }
                         }
-                        else{
-                            Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
-                        }
+
+                        Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
                     }
                     @Override
                     public void onFailure(Call<AssetToken> call, Throwable t) {
