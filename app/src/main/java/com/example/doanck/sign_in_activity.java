@@ -97,7 +97,7 @@ public class sign_in_activity extends AppCompatActivity {
                         if(token!= null){
                             String username = userName.getText().toString();
                             Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(sign_in_activity.this,dash_board_activity.class);
+                            Intent intent = new Intent(sign_in_activity.this,Main_dash_board_activity.class);
                             intent.putExtra("username", username);
                             startActivity(intent);
                         }

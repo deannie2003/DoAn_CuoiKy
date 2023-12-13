@@ -7,7 +7,15 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+>>>>>>> 657d193eda3723b92901ca63d2ec8c6a85701f43
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +28,7 @@
         android:theme="@style/Base.Theme.Page2"
         tools:targetApi="34">
         <activity
+<<<<<<< HEAD
             android:name=".setting_activity"
             android:exported="false" />
         <activity
@@ -27,6 +36,9 @@
             android:exported="false" />
         <activity
             android:name=".dash_board_activity"
+=======
+            android:name=".Main_dash_board_activity"
+>>>>>>> 657d193eda3723b92901ca63d2ec8c6a85701f43
             android:exported="false" />
         <activity
             android:name=".sign_in_activity"
@@ -39,7 +51,11 @@
             android:exported="false" />
         <activity
             android:name=".intro_app_activity"
+<<<<<<< HEAD
             android:exported="false"></activity>
+=======
+            android:exported="false" />
+>>>>>>> 657d193eda3723b92901ca63d2ec8c6a85701f43
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -51,10 +67,17 @@
         </activity>
         <activity
             android:name=".SettingActivity"
+<<<<<<< HEAD
             android:exported="false"></activity>
         <activity
             android:name=".profile_activity"
             android:exported="false"></activity>
+=======
+            android:exported="false" />
+        <activity
+            android:name=".profile_activity"
+            android:exported="false" />
+>>>>>>> 657d193eda3723b92901ca63d2ec8c6a85701f43
     </application>
 
 </manifest>
