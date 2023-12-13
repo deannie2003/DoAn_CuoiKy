@@ -1,6 +1,8 @@
 package com.example.doanck;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 
 import com.example.doanck.API.APIClient;
 import com.example.doanck.API.ApiInterface;
@@ -60,7 +64,8 @@ public class Map_Fragment extends Fragment {
     ArrayList<Double> boundsList = new ArrayList<>();
 
     String assetIdDefautWeather= "4EqQeQ0L4YNWNNTzvTOqjy";
-    Marker Device_1,Device_2;
+    Marker WeatherMaker,Device_2;
+    TextView txtHumidity,txtPlace,txtTempInfor,txtWindDirection,txtWindSpeed,txtPressure;
 
     private CompassOverlay mCompassOverlay = null;
     public Map_Fragment() {
@@ -176,7 +181,7 @@ public class Map_Fragment extends Fragment {
 
         // Khởi tạo Marker đánh dấu cho hai thiết bị Weather và Light
 
-        Marker WeatherMaker = new Marker(map);
+        WeatherMaker = new Marker(map);
         WeatherMaker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
         WeatherMaker.setIcon(getResources().getDrawable(R.drawable.device_weather_logo));
         WeatherMaker.setTitle("Deafault Weather");
@@ -197,23 +202,30 @@ public class Map_Fragment extends Fragment {
                         JSONObject data = attributes.getJSONObject("data");
                         JSONObject value = data.getJSONObject("value");
                         JSONObject coord = value.getJSONObject("coord");
+                        JSONObject main = value.getJSONObject("wind");
+
+                        JSONObject wind = value.getJSONObject("main");
+
+                        String humidity = String.valueOf(main.getDouble("humidity"));
+                        String temp = String.valueOf(main.getDouble("temp"));
+                        String pressure = String.valueOf(main.getDouble("pressure"));
+                        String winSpeed = String.valueOf(main.getDouble("winSpeed"));
+                        String winDer = String.valueOf(main.getDouble("deg"));
+                        String place = value.getString("name");
+
                         Double lon = coord.getDouble("lon");
                         Double lat = coord.getDouble("lat");
 
                         Log.d("API Call Device",Double.toString(lon));
                         Log.d("API Call Device",Double.toString(lat));;
-//                        map.setMinZoomLevel(minZoom);
-//                        map.setMaxZoomLevel(maxZoom);
-//
-//                        BoundingBox boundingBox = new BoundingBox(boundsList.get(3), boundsList.get(2),boundsList.get(1), boundsList.get(0));
-//                        map.setScrollableAreaLimitDouble(boundingBox);
-//
-//                        IMapController mapController = map.getController();
-//                        mapController.setZoom(zoom);
-//                        GeoPoint startPoint = new GeoPoint(centerList.get(1), centerList.get(0));
-//                        mapController.setCenter(startPoint);
-
                         WeatherMaker.setPosition(new GeoPoint(lat,lon));
+                        WeatherMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                            @Override
+                            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                                showDialog(humidity,temp,pressure,winSpeed,winDer,place);
+                                return false;
+                            }
+                        });
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -225,10 +237,42 @@ public class Map_Fragment extends Fragment {
 
             }
         });
-
+        WeatherMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                showDialog();
+                return false;
+            }
+        });
         map.getOverlays().add(WeatherMaker);
         map.invalidate();
         return view;
+    }
+    private void showDialog(
+            String humidity,String temp,String pressure,String winSpeed,String winDer,String place){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_dialog);
+
+        txtHumidity=dialog.findViewById(R.id.txtHumidity);
+        txtPlace = dialog.findViewById(R.id.txtPlace);
+        txtTempInfor = dialog.findViewById(R.id.txtTempInfor);
+        txtWindDirection = dialog.findViewById(R.id.txtWindDirection);
+        txtWindSpeed = dialog.findViewById(R.id.txtWindSpeed);
+        txtPressure = dialog.findViewById(R.id.txtPressure);
+
+        txtHumidity.setText(humidity);
+        txtPlace.setText(place);
+        txtTempInfor.setText(temp);
+        txtWindDirection.setText(winDer);
+        txtWindSpeed.setText(winSpeed);
+        txtPressure.setText(pressure);
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
     @Override
     public void onPause() {
