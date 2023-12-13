@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -95,11 +96,14 @@ public class sign_in_activity extends AppCompatActivity {
                         AssetToken assetToken = response.body();
                         String token = assetToken.getAccessToken();
                         if(token!= null){
+                            Log.d("token", "token:" + token);
                             String username = userName.getText().toString();
                             Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(sign_in_activity.this,Main_dash_board_activity.class);
                             intent.putExtra("username", username);
+                            intent.putExtra("token",token);
                             startActivity(intent);
+                            finishAffinity();
                         }
                         else{
                             Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
