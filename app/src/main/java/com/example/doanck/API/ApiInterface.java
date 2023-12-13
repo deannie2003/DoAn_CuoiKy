@@ -10,13 +10,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 
 public interface ApiInterface {
 
     //Link API : https://uiot.ixxc.dev/auth/realms/master/protocol/openid-connect/token
-
 
     //khởi tạo gson
     Gson gson = new GsonBuilder()
@@ -30,7 +32,6 @@ public interface ApiInterface {
             .build()
             .create(ApiInterface.class);
 
-
     @FormUrlEncoded
     @POST("/auth/realms/master/protocol/openid-connect/token") //phan con lai cua domain name
     Call<AssetToken> authenticate(
@@ -40,4 +41,10 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("grant_type") String grantType
     );
+
+    @GET("/api/master/map")
+    Call<Object> getMap();
+    @GET("api/master/asset/{assetID}")
+    Call<Object> getDevices(@Path("assetID") String assetID, @Header("Authorization") String auth);
+
 }

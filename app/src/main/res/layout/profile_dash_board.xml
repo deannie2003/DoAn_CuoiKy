@@ -94,42 +94,4 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tab_layout"
-        android:background="#F0ECF6"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scroll_view"
-
-        android:elevation="6dp"
-        tools:ignore="MissingConstraints">
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/home_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_home_24"
-            android:text="Home"/>
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/setting_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_settings_24dp"
-            android:text="Setting" />
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/map_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_map_24"
-            android:text="Map"/>
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/account_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_account_circle_24"
-            android:text="Account"/>
-    </com.google.android.material.tabs.TabLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

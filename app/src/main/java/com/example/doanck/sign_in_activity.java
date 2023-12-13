@@ -89,16 +89,29 @@ public class sign_in_activity extends AppCompatActivity {
                     public void onResponse(Call<AssetToken> call, Response<AssetToken> response) {
                         AssetToken assetToken = response.body();
 
+
                         if (assetToken != null) {
                             String token = assetToken.getAccessToken();
                             if (token != null) {
                                 String username = userName.getText().toString();
                                 Toast.makeText(sign_in_activity.this, "Đăng Nhập Thành Công!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(sign_in_activity.this, dash_board_activity.class);
+                                Intent intent = new Intent(sign_in_activity.this, Main_dash_board_activity.class);
                                 intent.putExtra("username", username);
                                 startActivity(intent);
                                 return;
                             }
+                        }
+                        String token = assetToken.getAccessToken();
+                        if(token!= null){
+                            String username = userName.getText().toString();
+                            Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(sign_in_activity.this,Main_dash_board_activity.class);
+                            intent.putExtra("username", username);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
+
                         }
 
                         Toast.makeText(sign_in_activity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
@@ -109,7 +122,6 @@ public class sign_in_activity extends AppCompatActivity {
                     }
                 });
 
-    }
-
-
+        }
 }
+
