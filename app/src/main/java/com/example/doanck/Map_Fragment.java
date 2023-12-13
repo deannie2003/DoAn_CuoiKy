@@ -2,6 +2,7 @@ package com.example.doanck;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -202,16 +204,18 @@ public class Map_Fragment extends Fragment {
                         JSONObject data = attributes.getJSONObject("data");
                         JSONObject value = data.getJSONObject("value");
                         JSONObject coord = value.getJSONObject("coord");
-                        JSONObject main = value.getJSONObject("wind");
-
-                        JSONObject wind = value.getJSONObject("main");
+                        JSONObject main = value.getJSONObject("main");
+    
+                        JSONObject wind = value.getJSONObject("wind");
 
                         String humidity = String.valueOf(main.getDouble("humidity"));
                         String temp = String.valueOf(main.getDouble("temp"));
                         String pressure = String.valueOf(main.getDouble("pressure"));
-                        String winSpeed = String.valueOf(main.getDouble("winSpeed"));
-                        String winDer = String.valueOf(main.getDouble("deg"));
+                        String winSpeed = String.valueOf(wind.getDouble("speed"));
+                        String winDer = String.valueOf(wind.getDouble("deg"));
                         String place = value.getString("name");
+                        Log.d("AssetCall", humidity + temp + pressure + winDer + winSpeed
+                                +place);
 
                         Double lon = coord.getDouble("lon");
                         Double lat = coord.getDouble("lat");
@@ -235,13 +239,6 @@ public class Map_Fragment extends Fragment {
             @Override
             public void onFailure(Call call, Throwable t) {
 
-            }
-        });
-        WeatherMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker, MapView mapView) {
-                showDialog();
-                return false;
             }
         });
         map.getOverlays().add(WeatherMaker);
@@ -270,7 +267,7 @@ public class Map_Fragment extends Fragment {
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
