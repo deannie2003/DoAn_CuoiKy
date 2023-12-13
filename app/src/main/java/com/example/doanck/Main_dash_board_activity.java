@@ -64,6 +64,7 @@ public class Main_dash_board_activity extends AppCompatActivity {
 
 
         viewPageFragment = new ViewPageFragment(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+
         viewPager.setAdapter(viewPageFragment);
 
         viewPager.setOffscreenPageLimit(4);

@@ -55,28 +55,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/name_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="user"
-                        android:textColor="#ffffff"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/avt"
-                        app:layout_constraintStart_toStartOf="@+id/avt"
-                        app:layout_constraintTop_toBottomOf="@+id/avt" />
-
-                    <TextView
-                        android:id="@+id/email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="email"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="@+id/avt"
-                        app:layout_constraintStart_toStartOf="@+id/avt"
-                        app:layout_constraintTop_toBottomOf="@+id/name_user" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -88,7 +66,54 @@
                         android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/email"/>
+                        app:layout_constraintTop_toBottomOf="@+id/avt">
+
+
+                        <EditText
+                            android:id="@+id/user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:layout_below="@id/titleSignin"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/edit_text_border_setting"
+                            android:drawableStart="@drawable/name"
+                            android:drawablePadding="16dp"
+                            android:fadeScrollbars="false"
+                            android:hint="Username"
+                            android:inputType="text"
+                            android:paddingStart="16dp"
+                            android:singleLine="true"
+                            android:textColor="@color/accent_color"
+                            android:textColorHint="@color/accent_color"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:layout_below="@id/user_name"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/edit_text_border_setting"
+                            android:drawableStart="@drawable/email"
+                            android:drawablePadding="16dp"
+                            android:fadeScrollbars="false"
+                            android:hint="Email"
+                            android:inputType="text"
+                            android:paddingStart="16dp"
+                            android:singleLine="true"
+                            android:textColor="@color/accent_color"
+                            android:textColorHint="@color/accent_color"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

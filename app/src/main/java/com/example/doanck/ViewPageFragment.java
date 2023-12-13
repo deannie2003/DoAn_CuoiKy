@@ -38,7 +38,6 @@ public class ViewPageFragment extends FragmentPagerAdapter {
                 return new Setting_Fragment();
             }
             default:
-
                 return  new Map_Fragment();
         }
     }
