@@ -2,6 +2,7 @@ package com.example.doanck;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.example.doanck.API.APIClient;
 import com.example.doanck.API.ApiInterface;
@@ -63,6 +65,7 @@ public class Map_Fragment extends Fragment {
 
     String assetIdDefautWeather= "4EqQeQ0L4YNWNNTzvTOqjy";
     Marker WeatherMaker,Device_2;
+    TextView txtHumidity,txtPlace,txtTempInfor,txtWindDirection,txtWindSpeed,txtPressure;
 
     private CompassOverlay mCompassOverlay = null;
     public Map_Fragment() {
@@ -199,7 +202,16 @@ public class Map_Fragment extends Fragment {
                         JSONObject data = attributes.getJSONObject("data");
                         JSONObject value = data.getJSONObject("value");
                         JSONObject coord = value.getJSONObject("coord");
-                        JSONObject main = value.getJSONObject("main");
+                        JSONObject main = value.getJSONObject("wind");
+
+                        JSONObject wind = value.getJSONObject("main");
+
+                        String humidity = String.valueOf(main.getDouble("humidity"));
+                        String temp = String.valueOf(main.getDouble("temp"));
+                        String pressure = String.valueOf(main.getDouble("pressure"));
+                        String winSpeed = String.valueOf(main.getDouble("winSpeed"));
+                        String winDer = String.valueOf(main.getDouble("deg"));
+                        String place = value.getString("name");
 
                         Double lon = coord.getDouble("lon");
                         Double lat = coord.getDouble("lat");
@@ -207,6 +219,13 @@ public class Map_Fragment extends Fragment {
                         Log.d("API Call Device",Double.toString(lon));
                         Log.d("API Call Device",Double.toString(lat));;
                         WeatherMaker.setPosition(new GeoPoint(lat,lon));
+                        WeatherMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                            @Override
+                            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                                showDialog(humidity,temp,pressure,winSpeed,winDer,place);
+                                return false;
+                            }
+                        });
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -229,31 +248,29 @@ public class Map_Fragment extends Fragment {
         map.invalidate();
         return view;
     }
-    private void showDialog(){
+    private void showDialog(
+            String humidity,String temp,String pressure,String winSpeed,String winDer,String place){
         final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottom_dialog);
 
         txtHumidity=dialog.findViewById(R.id.txtHumidity);
-        txtManufacturer = dialog.findViewById(R.id.txtManufacturer);
         txtPlace = dialog.findViewById(R.id.txtPlace);
-        txtRainFall = dialog.findViewById(R.id.txtRainFall);
         txtTempInfor = dialog.findViewById(R.id.txtTempInfor);
         txtWindDirection = dialog.findViewById(R.id.txtWindDirection);
         txtWindSpeed = dialog.findViewById(R.id.txtWindSpeed);
+        txtPressure = dialog.findViewById(R.id.txtPressure);
 
-        txtHumidity.setText(nearbyUsers1.getHumidity());
-        txtManufacturer.setText(nearbyUsers1.getManufacturer());
-        txtPlace.setText(nearbyUsers1.getPlace());
-        txtRainFall.setText(nearbyUsers1.getRainFall());
-        txtTempInfor.setText(nearbyUsers1.getTemperature());
-        txtWindDirection.setText(nearbyUsers1.getWindDirection());
-        txtWindSpeed.setText(nearbyUsers1.getWindSpeed());
-
+        txtHumidity.setText(humidity);
+        txtPlace.setText(place);
+        txtTempInfor.setText(temp);
+        txtWindDirection.setText(winDer);
+        txtWindSpeed.setText(winSpeed);
+        txtPressure.setText(pressure);
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
