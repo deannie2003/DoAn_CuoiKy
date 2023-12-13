@@ -59,8 +59,7 @@ public class Map_Fragment extends Fragment {
     ArrayList<Double> centerList = new ArrayList<>();
     ArrayList<Double> boundsList = new ArrayList<>();
 
-    String assetIdDefautWeather= "5zI6XqkQVSfdgOrZ1MyWEf";
-    String assetIdTest="6iWtSbgqMQsVq8RPkJJ9vo";
+    String assetIdDefautWeather= "4EqQeQ0L4YNWNNTzvTOqjy";
     Marker Device_1,Device_2;
 
     private CompassOverlay mCompassOverlay = null;
@@ -183,6 +182,7 @@ public class Map_Fragment extends Fragment {
         WeatherMaker.setTitle("Deafault Weather");
         apiInterface = APIClient.getClient().create(ApiInterface.class);
         Call MapDevice = apiInterface.getDevices(assetIdDefautWeather, "Bearer "+ Token.getToken());
+        Log.d("tokenmap:" , Token.getToken());
         MapDevice.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
@@ -200,8 +200,8 @@ public class Map_Fragment extends Fragment {
                         Double lon = coord.getDouble("lon");
                         Double lat = coord.getDouble("lat");
 
-                        Log.e("API Call Device",Double.toString(lon));
-                        Log.e("API Call Device",Double.toString(lat));;
+                        Log.d("API Call Device",Double.toString(lon));
+                        Log.d("API Call Device",Double.toString(lat));;
 //                        map.setMinZoomLevel(minZoom);
 //                        map.setMaxZoomLevel(maxZoom);
 //
