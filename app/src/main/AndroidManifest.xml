@@ -24,13 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Page2"
         tools:targetApi="34">
-
-
-
-
         <activity
             android:name=".Main_dash_board_activity"
-
             android:exported="false" />
         <activity
             android:name=".sign_in_activity"

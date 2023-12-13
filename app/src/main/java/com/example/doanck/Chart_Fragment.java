@@ -1,11 +1,6 @@
 package com.example.doanck;
 
-
-import android.media.MediaPlayer;
-import android.net.Uri;
-
 import android.app.DatePickerDialog;
-
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.example.doanck.API.APIClient;
 import com.example.doanck.API.ApiInterface;
@@ -61,8 +55,6 @@ import java.util.TimeZone;
  */
 public class Chart_Fragment extends Fragment {
 
-    private VideoView videoView;
-    private boolean isVideoLooping = true; // Biến để kiểm soát việc lặp video
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -141,7 +133,6 @@ public class Chart_Fragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
@@ -172,23 +163,6 @@ public class Chart_Fragment extends Fragment {
                 ShowChart();
             }
         });
-
-        videoView = view.findViewById(R.id.videoViewSplash);
-        String videoPath = "android.resource://" + requireContext().getPackageName() + "/" + R.raw.background_night;
-        Uri videoUri = Uri.parse(videoPath);
-        videoView.setVideoURI(videoUri);
-        videoView.start();
-
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                // Kiểm tra biến để xem có lặp lại video hay không
-                if (isVideoLooping) {
-                    videoView.start(); // Nếu lặp lại, bắt đầu lại video
-                }
-            }
-        });
-
 
         return view;
     }
