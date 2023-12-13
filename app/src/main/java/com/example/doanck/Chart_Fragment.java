@@ -1,15 +1,19 @@
 package com.example.doanck;
 
 import android.app.DatePickerDialog;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.doanck.API.APIClient;
 import com.example.doanck.API.ApiInterface;
@@ -54,6 +58,8 @@ import java.util.TimeZone;
  * create an instance of this fragment.
  */
 public class Chart_Fragment extends Fragment {
+    private VideoView videoView;
+    private boolean isVideoLooping = true; // Biến để kiểm soát việc lặp video
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -163,7 +169,21 @@ public class Chart_Fragment extends Fragment {
                 ShowChart();
             }
         });
+        videoView = view.findViewById(R.id.videoViewSplash);
+        String videoPath = "android.resource://" + requireContext().getPackageName() + "/" + R.raw.background_night;
+        Uri videoUri = Uri.parse(videoPath);
+        videoView.setVideoURI(videoUri);
+        videoView.start();
 
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // Kiểm tra biến để xem có lặp lại video hay không
+                if (isVideoLooping) {
+                    videoView.start(); // Nếu lặp lại, bắt đầu lại video
+                }
+            }
+        });
         return view;
     }
     private void ShowChart(){
