@@ -62,11 +62,6 @@ public class Setting_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_setting_, container, false);
-        userName = view.findViewById(R.id.user_name);
-        Email = view.findViewById(R.id.email);
-
-        userName.setText(Username.getName().toString());
-        Email.setText(Username.getEmail().toString());
         return  view;
     }
 }
