@@ -185,7 +185,7 @@ public class Map_Fragment extends Fragment {
 
         WeatherMaker = new Marker(map);
         WeatherMaker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
-        WeatherMaker.setIcon(getResources().getDrawable(R.drawable.device_weather_logo));
+        WeatherMaker.setIcon(getResources().getDrawable(R.drawable.baseline_location_on_24));
         WeatherMaker.setTitle("Deafault Weather");
         apiInterface = APIClient.getClient().create(ApiInterface.class);
         Call MapDevice = apiInterface.getDevices(assetIdDefautWeather, "Bearer "+ Token.getToken());

@@ -7,7 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.EditText;
+import com.example.doanck.ModelLogin.Username;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Setting_Fragment#newInstance} factory method to
@@ -24,6 +25,7 @@ public class Setting_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    EditText userName,Email;
     public Setting_Fragment() {
         // Required empty public constructor
     }
@@ -59,6 +61,12 @@ public class Setting_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting_, container, false);
+        View view =  inflater.inflate(R.layout.fragment_setting_, container, false);
+        userName = view.findViewById(R.id.user_name);
+        Email = view.findViewById(R.id.email);
+
+        userName.setText(Username.getName().toString());
+        Email.setText(Username.getEmail().toString());
+        return  view;
     }
 }
