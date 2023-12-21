@@ -105,6 +105,11 @@ public class sign_in_activity extends AppCompatActivity {
                             intent.putExtra("token",token);
                             intent.putExtra("email",email);
                             startActivity(intent);
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putBoolean("isLoggedIn", true);
+                            editor.putString("token", token); // Lưu token có thể hữu ích cho các yêu cầu sau này.
+                            editor.apply();
+
                             finishAffinity();
                         }
                         else{

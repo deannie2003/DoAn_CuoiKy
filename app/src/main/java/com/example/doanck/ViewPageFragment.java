@@ -24,44 +24,50 @@ public class ViewPageFragment extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment;
         switch (position){
             case 0:{
-                fragment = new Map_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
-                break;
+                return new Map_Fragment();
             }
             case 1:{
-                fragment = new Weather_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
-                break;
+                return new Weather_Fragment();
             }
             case 2:{
-                fragment = new Chart_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
-                break;
+                return new Chart_Fragment();
             }
             case 3:{
-                fragment = new Setting_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.ic_settings_24dp));
-                break;
+                return new Setting_Fragment();
             }
             default:
-                fragment = new Map_Fragment();
-                break;
+                return  new Map_Fragment();
         }
-        return fragment;
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 
-//    @Nullable
-        private Bundle createBundleForIcon(int iconResource) {
-       Bundle bundle = new Bundle();
-       bundle.putInt("icon", iconResource);
-       return bundle;
-      }
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        String title="";
+        switch (position){
+            case 0:{
+                title="MAP";
+                break;
+            }
+            case 1:{
+                title="WEATHER";
+                break;
+            }
+            case 2:{
+                title="CHART";
+                break;
+            }
+            case 3:{
+                title="SETTING";
+            }
+        }
+        return title;
+    }
 }
