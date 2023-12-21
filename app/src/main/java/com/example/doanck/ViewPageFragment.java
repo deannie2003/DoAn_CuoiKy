@@ -24,50 +24,50 @@ public class ViewPageFragment extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
+        Fragment fragment;
         switch (position){
             case 0:{
-                return new Map_Fragment();
+                fragment = new Hello_user_fragment();
+                fragment.setArguments(createBundleForIcon(R.drawable.ic_settings_24dp));
+                break;
             }
             case 1:{
-                return new Weather_Fragment();
+                fragment = new Map_Fragment();
+                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
+                break;
             }
             case 2:{
-                return new Chart_Fragment();
+                fragment = new Weather_Fragment();
+                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
+                break;
             }
             case 3:{
-                return new Setting_Fragment();
+                fragment = new Chart_Fragment();
+                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
+                break;
             }
+            case 4:{
+                fragment = new Setting_Fragment();
+                fragment.setArguments(createBundleForIcon(R.drawable.ic_settings_24dp));
+                break;
+            }
+
             default:
-                return  new Map_Fragment();
+                fragment = new Hello_user_fragment();
+                break;
         }
+        return fragment;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 5;
     }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        String title="";
-        switch (position){
-            case 0:{
-                title="MAP";
-                break;
-            }
-            case 1:{
-                title="WEATHER";
-                break;
-            }
-            case 2:{
-                title="CHART";
-                break;
-            }
-            case 3:{
-                title="SETTING";
-            }
-        }
-        return title;
+    //    @Nullable
+    private Bundle createBundleForIcon(int iconResource) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("icon", iconResource);
+        return bundle;
     }
 }

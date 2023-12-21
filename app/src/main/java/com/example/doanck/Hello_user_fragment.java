@@ -7,14 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import com.example.doanck.ModelLogin.Username;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Setting_Fragment#newInstance} factory method to
+ * Use the {@link Hello_user_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Setting_Fragment extends Fragment {
+public class Hello_user_fragment extends Fragment {
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,9 +27,9 @@ public class Setting_Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private TextView textView;
 
-    EditText userName,Email;
-    public Setting_Fragment() {
+    public Hello_user_fragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +39,11 @@ public class Setting_Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Setting_Fragment.
+     * @return A new instance of fragment Hello_user_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Setting_Fragment newInstance(String param1, String param2) {
-        Setting_Fragment fragment = new Setting_Fragment();
+    public static Hello_user_fragment newInstance(String param1, String param2) {
+        Hello_user_fragment fragment = new Hello_user_fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,7 +64,20 @@ public class Setting_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_setting_, container, false);
+        View view =  inflater.inflate(R.layout.fragment_hello_user_fragment, container, false);
+        textView = view.findViewById(R.id.hi_user);
+
+        // Thực hiện animation
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.hi_user_anim);
+        textView.startAnimation(animation);
+
+        Bundle args = getArguments();
+        if (args != null && args.containsKey("icon")) {
+            int iconResource = args.getInt("icon");
+            // Bây giờ bạn có thể sử dụng iconResource này để đặt biểu tượng trong layout của bạn
+            // Ví dụ, nếu bạn có một ImageView trong layout của mình với id 'iconImageView':
+            ImageView iconImageView = view.findViewById(R.id.iconImageView);
+            iconImageView.setImageResource(iconResource);
         return  view;
     }
 }
