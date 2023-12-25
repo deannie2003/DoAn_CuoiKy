@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Switch;
 import android.widget.TextView;
 
 /**
@@ -64,20 +65,12 @@ public class Hello_user_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_hello_user_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_hello_user_fragment, container, false);
         textView = view.findViewById(R.id.hi_user);
 
-        // Thực hiện animation
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.hi_user_anim);
-        textView.startAnimation(animation);
-
-        Bundle args = getArguments();
-        if (args != null && args.containsKey("icon")) {
-            int iconResource = args.getInt("icon");
-            // Bây giờ bạn có thể sử dụng iconResource này để đặt biểu tượng trong layout của bạn
-            // Ví dụ, nếu bạn có một ImageView trong layout của mình với id 'iconImageView':
-            ImageView iconImageView = view.findViewById(R.id.iconImageView);
-            iconImageView.setImageResource(iconResource);
-        return  view;
-    }
+        Switch sw = (Switch) view.findViewById(R.id.mySwitchId);
+        sw.setChecked(true);
+        sw.setChecked(false);
+            return view;
+        }
 }
