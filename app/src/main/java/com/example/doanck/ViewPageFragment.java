@@ -1,6 +1,10 @@
 package com.example.doanck;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,17 +42,17 @@ public class ViewPageFragment extends FragmentPagerAdapter {
             }
             case 2:{
                 fragment = new Weather_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
+                fragment.setArguments(createBundleForIcon(R.drawable.baseline_water_drop_24));
                 break;
             }
             case 3:{
                 fragment = new Chart_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
+                fragment.setArguments(createBundleForIcon(R.drawable.baseline_location_on_24));
                 break;
             }
             case 4:{
                 fragment = new Setting_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.ic_settings_24dp));
+                fragment.setArguments(createBundleForIcon(R.drawable.baseline_person_24));
                 break;
             }
 
@@ -69,5 +73,34 @@ public class ViewPageFragment extends FragmentPagerAdapter {
         Bundle bundle = new Bundle();
         bundle.putInt("icon", iconResource);
         return bundle;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        String title="";
+        switch (position){
+            case 0:{
+                title="MAP";
+                break;
+            }
+            case 1:{
+                title="WEATHER";
+                break;
+            }
+            case 2:{
+                title="CHART";
+                break;
+            }
+            case 3:{
+                title="WEATHER1";
+                break;
+            }
+            case 4:{
+                title="CHART1";
+                break;
+            }
+        }
+        return title;
     }
 }

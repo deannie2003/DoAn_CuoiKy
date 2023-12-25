@@ -102,7 +102,8 @@ public class Chart_Fragment extends Fragment {
             typeTimeMonth="Month",
             typeTimeYear="Year";
 
-
+    private VideoView videoView;
+    private boolean isVideoLooping = true; // Biến để kiểm soát việc lặp video
 
 
 
@@ -166,6 +167,22 @@ public class Chart_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ShowChart();
+            }
+        });
+
+        VideoView videoView = view.findViewById(R.id.videoViewSplash);
+        String videoPath = "android.resource://" + requireContext().getPackageName() + "/" + R.raw.video_rain;
+        Uri videoUri = Uri.parse(videoPath);
+        videoView.setVideoURI(videoUri);
+        videoView.start();
+
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // Kiểm tra biến để xem có lặp lại video hay không
+                if (isVideoLooping) {
+                    videoView.start(); // Nếu lặp lại, bắt đầu lại video
+                }
             }
         });
 
