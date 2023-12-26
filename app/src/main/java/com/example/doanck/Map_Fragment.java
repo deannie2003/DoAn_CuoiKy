@@ -297,6 +297,7 @@ public class Map_Fragment extends Fragment {
             }
         });
         Button button_getBack = view.findViewById(R.id.returnButton);
+        button_getBack.bringToFront();
         button_getBack.setOnClickListener(v -> {
             mapController.setCenter(startPoint);
         });
