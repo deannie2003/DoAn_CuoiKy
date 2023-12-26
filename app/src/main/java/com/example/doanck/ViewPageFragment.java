@@ -1,6 +1,18 @@
 package com.example.doanck;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.style.ImageSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,9 +23,17 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class ViewPageFragment extends FragmentPagerAdapter {
     private Bundle fragmentBundle;
-    public ViewPageFragment(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
-        fragmentBundle = new Bundle();
+    private Context context;
+    private int[] iconResources = {
+            R.drawable.baseline_home_24,
+            R.drawable.baseline_map_24,
+            R.drawable.baseline_weather_unit_24,
+            R.drawable.baseline_chart_24,
+            R.drawable.baseline_account_circle_24
+    };
+    public ViewPageFragment(@NonNull FragmentManager fm, Context context) {
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        this.context = context;
     }
 
 
@@ -28,30 +48,24 @@ public class ViewPageFragment extends FragmentPagerAdapter {
         switch (position){
             case 0:{
                 fragment = new Hello_user_fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.ic_settings_24dp));
                 break;
             }
             case 1:{
                 fragment = new Map_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
                 break;
             }
             case 2:{
                 fragment = new Weather_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
                 break;
             }
             case 3:{
                 fragment = new Chart_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.baseline_home_24));
                 break;
             }
             case 4:{
                 fragment = new Setting_Fragment();
-                fragment.setArguments(createBundleForIcon(R.drawable.ic_settings_24dp));
                 break;
             }
-
             default:
                 fragment = new Hello_user_fragment();
                 break;
@@ -69,5 +83,43 @@ public class ViewPageFragment extends FragmentPagerAdapter {
         Bundle bundle = new Bundle();
         bundle.putInt("icon", iconResource);
         return bundle;
+    }
+
+    @Nullable
+    @Override
+//    public CharSequence getPageTitle(int position) {
+//        String title="";
+//        switch (position){
+//            case 0:{
+//                title="Hello user";
+//                break;
+//            }
+//            case 1:{
+//                title="MAP";
+//                break;
+//            }
+//            case 2:{
+//                title="Weather";
+//                break;
+//            }
+//            case 3:{
+//                title="Chart";
+//                break;
+//            }
+//            case 4:{
+//                title="Settings";
+//                break;
+//            }
+//        }
+//        return title;
+//    }
+    public CharSequence getPageTitle(int position) {
+        Drawable icon = context.getResources().getDrawable(iconResources[position]);
+        icon.setBounds(0, 0, icon.getIntrinsicWidth(), icon.getIntrinsicHeight());
+        ImageSpan imageSpan = new ImageSpan(icon);
+        // Chuyển đổi Drawable thành Spannable để hiển thị trong TabLayout
+        SpannableString  spannableString = new SpannableString(" ");
+        spannableString.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableString;
     }
 }

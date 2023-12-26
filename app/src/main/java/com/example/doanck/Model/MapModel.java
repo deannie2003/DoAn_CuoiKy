@@ -1,75 +1,75 @@
 package com.example.doanck.Model;
 
-import com.google.gson.JsonObject;
-import com.google.gson.annotations.SerializedName;
-import org.osmdroid.api.IMapController;
-import org.osmdroid.config.Configuration;
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-import org.osmdroid.util.BoundingBox;
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.compass.CompassOverlay;
-import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
-import org.osmdroid.views.overlay.gestures.RotationGestureOverlay;
-
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class MapModel {
-//    public static boolean isReady = false;
-//
-//    public static MapModel MapObj = null;
-//
-//    public static MapModel getMapObj() {
-//        return MapObj;
-//    }
-//
-//    public static void setMapObj(MapModel mapObj) {
-//        MapObj = mapObj;
-//        isReady = true;
-//    }
-//
-//    @SerializedName("options")
-//    public JsonObject options;
-//    @SerializedName("version")
-//    public int version;
-//    @SerializedName("sources")
-//    public JsonObject sources;
-//    @SerializedName("sprite")
-//    public String sprite;
-//    @SerializedName("glyphs")
-//    public String glyphs;
-//    @SerializedName("layers")
-//    public ArrayList<JsonObject> layers;
-//
-//    public GeoPoint getCenter() {
-//        float lat = options.get("default").getAsJsonObject().get("center").getAsJsonArray().get(1).getAsFloat();
-//        float lng = options.get("default").getAsJsonObject().get("center").getAsJsonArray().get(0).getAsFloat();
-//        return Point.fromLngLat(lng, lat);
-//    }
-//
-//    public double getZoom() {
-//        return options.get("default").getAsJsonObject().get("zoom").getAsInt();
-//    }
-//
-//    public double getMinZoom() {
-//        return options.get("default").getAsJsonObject().get("minZoom").getAsInt();
-//    }
-//
-//    public double getMaxZoom() {
-//        return options.get("default").getAsJsonObject().get("maxZoom").getAsInt();
-//    }
-//
-//    public CoordinateBounds getBounds() {
-//        ArrayList<Float> bounds = new ArrayList<>();
-//
-//        for (int i = 0; i < 4; i++) {
-//            bounds.add(options.get("default").getAsJsonObject().get("bounds").getAsJsonArray().get(i).getAsFloat());
-//        }
-//
-//        return new CoordinateBounds(
-//                Point.fromLngLat(bounds.get(0),bounds.get(1)),
-//                Point.fromLngLat(bounds.get(2),bounds.get(3))
-//        );
-//    }
+    private Options options;
+
+    public Options getOptions() {
+        return options;
+    }
+
+    public void setOptions(Options options) {
+        this.options = options;
+    }
+}
+
+class Options {
+    private DefaultObject defaultObject;
+
+    public DefaultObject getDefaultObject() {
+        return defaultObject;
+    }
+
+    public void setDefaultObject(DefaultObject defaultObject) {
+        this.defaultObject = defaultObject;
+    }
+}
+
+class DefaultObject {
+    private List<Double> center;
+    private List<Double> bounds;
+    private double zoom;
+    private double minZoom;
+    private double maxZoom;
+
+    public List<Double> getCenter() {
+        return center;
+    }
+
+    public void setCenter(List<Double> center) {
+        this.center = center;
+    }
+
+    public List<Double> getBounds() {
+        return bounds;
+    }
+
+    public void setBounds(List<Double> bounds) {
+        this.bounds = bounds;
+    }
+
+    public double getZoom() {
+        return zoom;
+    }
+
+    public void setZoom(double zoom) {
+        this.zoom = zoom;
+    }
+
+    public double getMinZoom() {
+        return minZoom;
+    }
+
+    public void setMinZoom(double minZoom) {
+        this.minZoom = minZoom;
+    }
+
+    public double getMaxZoom() {
+        return maxZoom;
+    }
+
+    public void setMaxZoom(double maxZoom) {
+        this.maxZoom = maxZoom;
+    }
 }

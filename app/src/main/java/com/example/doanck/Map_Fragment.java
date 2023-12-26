@@ -4,11 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
@@ -16,10 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.doanck.API.APIClient;
 import com.example.doanck.API.ApiInterface;
+import com.example.doanck.Model.Token;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -41,7 +43,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import com.example.doanck.Model.Token;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Map_Fragment#newInstance} factory method to
@@ -58,16 +59,22 @@ public class Map_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+    private  GeoPoint startPoint;
+    private Location location;
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     MapView map = null;
     View view;
+    IMapController mapController;
     ApiInterface apiInterface;
     ArrayList<Double> centerList = new ArrayList<>();
     ArrayList<Double> boundsList = new ArrayList<>();
 
     String assetIdDefautWeather= "4EqQeQ0L4YNWNNTzvTOqjy";
-    Marker WeatherMaker,Device_2;
+    String assetIdLightBub= "6iWtSbgqMQsVq8RPkJJ9vo";
+    Marker WeatherMaker,LightMaker;
     TextView txtHumidity,txtPlace,txtTempInfor,txtWindDirection,txtWindSpeed,txtPressure;
+    TextView txtBrightness,txtColorTemp,txtEmail,txtOnoff;
 
     private CompassOverlay mCompassOverlay = null;
     public Map_Fragment() {
@@ -112,6 +119,7 @@ public class Map_Fragment extends Fragment {
         map = view.findViewById(R.id.map);
         map.setMultiTouchControls(true);
         map.setTileSource(TileSourceFactory.MAPNIK);
+        mapController = map.getController();
 
         apiInterface = APIClient.getClient().create(ApiInterface.class);
         Call mapValue = apiInterface.getMap();
@@ -150,15 +158,13 @@ public class Map_Fragment extends Fragment {
                         Log.e("API Call",Double.toString(maxZoom));
                         map.setMinZoomLevel(minZoom);
                         map.setMaxZoomLevel(maxZoom);
-
+                        map.invalidate();
                         BoundingBox boundingBox = new BoundingBox(boundsList.get(3), boundsList.get(2),boundsList.get(1), boundsList.get(0));
                         map.setScrollableAreaLimitDouble(boundingBox);
-
-                        IMapController mapController = map.getController();
+                        mapController = map.getController();
                         mapController.setZoom(zoom);
-                        GeoPoint startPoint = new GeoPoint(centerList.get(1), centerList.get(0));
+                        startPoint = new GeoPoint(centerList.get(1), centerList.get(0));
                         mapController.setCenter(startPoint);
-
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -241,7 +247,61 @@ public class Map_Fragment extends Fragment {
 
             }
         });
+        LightMaker = new Marker(map);
+        LightMaker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER);
+        LightMaker.setIcon(getResources().getDrawable(R.drawable.baseline_location_1_on_24));
+        LightMaker.setTitle("LightBub");
+        apiInterface = APIClient.getClient().create(ApiInterface.class);
+        Call MapDevice_1 = apiInterface.getDevices(assetIdLightBub, "Bearer "+ Token.getToken());
+        Log.d("tokenmap:" , Token.getToken());
+        MapDevice_1.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                Log.d("API Call", response.code()+"");
+                if (response.isSuccessful() && response.body() != null){
+                    Log.d("API Call Device","Successful");
+                    Log.d("API Call Device",response.toString());
+                    Log.d("API Call Device","response: " + new Gson().toJson(response.body()));
+                    try {
+                        JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
+                        JSONObject attributes = jsonObject.getJSONObject("attributes");
+                        JSONObject brightness = attributes.getJSONObject("brightness");
+                        JSONObject colourTemperature = attributes.getJSONObject("colourTemperature");
+                        JSONObject email = attributes.getJSONObject("email");
+                        JSONObject onOff = attributes.getJSONObject("onOff");
+
+                        String value_brightness = String.valueOf(brightness.getDouble("value"));
+                        String value_colourTemperature = String.valueOf(colourTemperature.getDouble("value"));
+                        String value_email = String.valueOf(email.getString("value"));
+                        String value_onOff = String.valueOf(onOff.getBoolean("value"));
+                        Double lon = 106.80345028525176;
+                        Double lat = 10.869905172970164;
+
+                        LightMaker.setPosition(new GeoPoint(lat,lon));
+                        LightMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                            @Override
+                            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                                showDialog_1(value_brightness,value_colourTemperature,value_email,value_onOff);
+                                return false;
+                            }
+                        });
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
+        Button button_getBack = view.findViewById(R.id.returnButton);
+        button_getBack.setOnClickListener(v -> {
+            mapController.setCenter(startPoint);
+        });
         map.getOverlays().add(WeatherMaker);
+        map.getOverlays().add(LightMaker);
         map.invalidate();
         return view;
     }
@@ -264,6 +324,28 @@ public class Map_Fragment extends Fragment {
         txtWindDirection.setText(winDer);
         txtWindSpeed.setText(winSpeed);
         txtPressure.setText(pressure);
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+    private void showDialog_1(
+            String value_brightness,String value_colourTemperature,String value_email,String value_onOff){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_dialog_1);
+
+        txtBrightness=dialog.findViewById(R.id.txtBrightness);
+        txtColorTemp = dialog.findViewById(R.id.txtTempInfor);
+        txtEmail = dialog.findViewById(R.id.txtEmail);
+        txtOnoff = dialog.findViewById(R.id.txtonOff);
+
+        txtBrightness.setText(value_brightness);
+        txtColorTemp.setText(value_colourTemperature);
+        txtEmail.setText(value_email);
+        txtOnoff.setText(value_onOff);
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);

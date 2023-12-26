@@ -5,8 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+
     tools:context=".Chart_Fragment">
+    <VideoView
+        android:id="@+id/videoViewSplash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -30,7 +36,9 @@
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/inputTVAttributteName"
+            android:textColor="@color/white"
             android:layout_width="360dp"
+            android:background="@drawable/dash_board_background"
             android:layout_height="55dp"
             android:inputType="none"
             app:simpleItems="@array/Attribute_list" />
@@ -60,6 +68,8 @@
             android:id="@+id/inputTVTimer"
             android:layout_width="360dp"
             android:layout_height="55dp"
+            android:textColor="@color/white"
+            android:background="@drawable/dash_board_background"
             android:inputType="none"
             app:simpleItems="@array/Timer_list" />
 
@@ -89,9 +99,10 @@
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/inputTVDialogTimer"
             android:layout_width="360dp"
+            android:textColor="@color/white"
+            android:background="@drawable/dash_board_background"
             android:layout_height="55dp"
-            android:inputType="none"
-            />
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,7 +111,9 @@
         android:id="@+id/lineChart"
         android:layout_width="390dp"
         android:layout_height="339dp"
+        android:alpha="0.9"
         android:layout_marginBottom="48dp"
+android:background="@drawable/chart_backgr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
@@ -112,6 +125,9 @@
         android:layout_width="336dp"
         android:layout_height="66dp"
         android:text="SHOW"
+        android:textSize="20sp"
+        android:textColor="#80ADD8E6"
+        android:background="@drawable/dash_board_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"

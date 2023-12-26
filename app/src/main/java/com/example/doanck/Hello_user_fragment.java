@@ -71,6 +71,9 @@ public class Hello_user_fragment extends Fragment {
         Switch sw = (Switch) view.findViewById(R.id.mySwitchId);
         sw.setChecked(true);
         sw.setChecked(false);
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.hi_user_anim);
+        //textView.startAnimation(animation);
             return view;
         }
-}
+
+    }
