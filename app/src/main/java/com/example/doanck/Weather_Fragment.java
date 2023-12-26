@@ -15,8 +15,13 @@ import com.example.doanck.API.ApiInterface;
 import com.example.doanck.Model.Token;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +46,7 @@ public class Weather_Fragment extends Fragment {
     ApiInterface apiInterface;
     String assetIdDefautWeather= "4EqQeQ0L4YNWNNTzvTOqjy";
 
-    TextView txtHumidity,txtPlace,txtTempInfor,txtWindDirection,txtWindSpeed,txtPressure;
+    TextView txtHumidity,txtPlace,txtTempInfor,txtWindDirection,txtWindSpeed,txtPressure,txtSunset,txtSunRise,txtDescripion;
 
     public Weather_Fragment() {
         // Required empty public constructor
@@ -98,7 +103,8 @@ public class Weather_Fragment extends Fragment {
                         JSONObject attributes = jsonObject.getJSONObject("attributes");
                         JSONObject data = attributes.getJSONObject("data");
                         JSONObject value = data.getJSONObject("value");
-                        JSONObject coord = value.getJSONObject("coord");
+                        JSONArray weather = value.getJSONArray("weather");
+                        JSONObject sys = value.getJSONObject("sys");
                         JSONObject main = value.getJSONObject("main");
 
                         JSONObject wind = value.getJSONObject("wind");
@@ -108,15 +114,22 @@ public class Weather_Fragment extends Fragment {
                         String pressure = String.valueOf(main.getDouble("pressure"));
                         String winSpeed = String.valueOf(wind.getDouble("speed"));
                         String winDer = String.valueOf(wind.getDouble("deg"));
-                        String place = value.getString("name");
-                        Log.d("Weather", humidity + temp + pressure + winDer + winSpeed
-                                +place);
+                        Long LongsunSet = Long.valueOf(sys.getLong("sunset"));
+                        Long LongsunRise = Long.valueOf(sys.getLong("sunrise"));
+                        String sunSet = convertTimestampToTime(LongsunSet);
+                        String sunRise = convertTimestampToTime(LongsunRise);
+                        JSONObject weatherObject = weather.getJSONObject(0);
+                        String description = weatherObject.getString("description");
+                        Log.d("Weather", humidity + temp + pressure + winDer + winSpeed + sunRise + sunSet);
 
-                        txtTempInfor.setText(temp);
+                        txtTempInfor.setText(temp + "°C");
                         txtWindDirection.setText(winDer);
                         txtWindSpeed.setText(winSpeed);
                         txtPressure.setText(pressure);
                         txtHumidity.setText(humidity);
+                        txtDescripion.setText(description);
+                        txtSunset.setText(sunSet);
+                        txtSunRise.setText(sunRise);
 
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
@@ -132,9 +145,17 @@ public class Weather_Fragment extends Fragment {
     }
     void getElement(){
         txtTempInfor = view.findViewById(R.id.nhietdo);
-        txtWindDirection = view.findViewById(R.id.huonggio);
+        txtWindDirection = view.findViewById(R.id.huongio);
         txtWindSpeed = view.findViewById(R.id.tocdogio);
         txtPressure = view.findViewById(R.id.apsuat);
         txtHumidity = view.findViewById(R.id.doam);
+        txtSunRise = view.findViewById(R.id.Sunrise);
+        txtSunset = view.findViewById(R.id.Sunset);
+        txtDescripion = view.findViewById(R.id.Desciption);
+    }
+    String convertTimestampToTime(long timestamp) {
+        Date date = new Date(timestamp * 1000);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        return dateFormat.format(date);
     }
 }

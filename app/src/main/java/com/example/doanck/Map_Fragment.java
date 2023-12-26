@@ -56,6 +56,7 @@ public class Map_Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String value_brightness,value_colourTemperature,value_email,value_onOff;
 
     private  GeoPoint startPoint;
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
@@ -265,37 +266,28 @@ public class Map_Fragment extends Fragment {
                         JSONObject email = attributes.getJSONObject("email");
                         JSONObject onOff = attributes.getJSONObject("onOff");
 
-                        String value_brightness = String.valueOf(brightness.getDouble("value"));
-                        String value_colourTemperature = String.valueOf(colourTemperature.getDouble("value"));
-                        String value_email = String.valueOf(email.getString("value"));
-                        String value_onOff = String.valueOf(onOff.getBoolean("value"));
-
-
-//                        Log.d("AssetCall", humidity + temp + pressure + winDer + winSpeed
-//                                +place);
-
+                         value_brightness = String.valueOf(brightness.getDouble("value"));
+                         value_colourTemperature = String.valueOf(colourTemperature.getDouble("value"));
+                         value_email = String.valueOf(email.getString("value"));
+                         value_onOff = String.valueOf(onOff.getBoolean("value"));
                         Double lon = 106.80345028525176;
                         Double lat = 10.869905172970164;
-
-//                        Log.d("API Call Device",Double.toString(lon));
-//                        Log.d("API Call Device",Double.toString(lat));;
                         LightMaker.setPosition(new GeoPoint(lat,lon));
-                        LightMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-                            @Override
-                            public boolean onMarkerClick(Marker marker, MapView mapView) {
-                                showDialog_1(value_brightness,value_colourTemperature,value_email,value_onOff);
-                                return false;
-                            }
-                        });
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
-
             @Override
             public void onFailure(Call call, Throwable t) {
 
+            }
+        });
+        LightMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                showDialog_1(value_brightness, value_colourTemperature, value_email, value_onOff);
+                return false;
             }
         });
         map.getOverlays().add(WeatherMaker);
