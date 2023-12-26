@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:fontFamily="@font/golden"
-        android:text="Hi, user !"
+        android:text="Hi, user a !"
         android:textSize="50sp"
         android:textStyle="bold" />
 
