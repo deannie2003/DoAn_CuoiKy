@@ -16,17 +16,45 @@
         android:text="Hi, user !"
         android:textColor="@color/white"
         android:textSize="50sp"
+<<<<<<< HEAD
         android:textStyle="bold" />
 
     <Switch
         android:checked = "true"
         android:id = "@+id/mySwitchId"
+=======
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/time"
+>>>>>>> 3382626fcd89864f2d118986b2b63e07a45f20f1
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+<<<<<<< HEAD
         android:layout_marginEnd="169dp"
         android:layout_marginBottom="314dp" />
+=======
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="268dp"
+        android:text="TextView"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/dmy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/time"
+        android:layout_alignEnd="@+id/time"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="208dp"
+        android:text="TextView"
+        android:textSize="30sp" />
+>>>>>>> 3382626fcd89864f2d118986b2b63e07a45f20f1
 
 
 </RelativeLayout>

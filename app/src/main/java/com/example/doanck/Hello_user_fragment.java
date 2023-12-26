@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Switch;
 import android.widget.TextView;
 
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Hello_user_fragment#newInstance} factory method to
@@ -29,6 +38,11 @@ public class Hello_user_fragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private TextView textView;
+
+    private TextView timeTextView;
+    private TextView dmyTextView;
+
+    private Handler handler;
 
     public Hello_user_fragment() {
         // Required empty public constructor
@@ -71,9 +85,46 @@ public class Hello_user_fragment extends Fragment {
         Switch sw = (Switch) view.findViewById(R.id.mySwitchId);
         sw.setChecked(true);
         sw.setChecked(false);
+        timeTextView = view.findViewById(R.id.time);
+        dmyTextView = view.findViewById(R.id.dmy);
+
+        handler = new Handler(Looper.getMainLooper());
+        startUpdatingDateTime();
+
+
+        // Thực hiện animation
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.hi_user_anim);
         //textView.startAnimation(animation);
             return view;
         }
-
+    private void startUpdatingDateTime() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                updateDateTime();
+                handler.postDelayed(this, 1000); // Update time every second
+            }
+        }, 1000); // Initial delay 1 second
     }
+
+    private void updateDateTime() {
+        Calendar calendar = Calendar.getInstance();
+
+        // Update time
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        String currentTime = timeFormat.format(calendar.getTime());
+        timeTextView.setText(currentTime);
+
+        // Update date
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.getDefault());
+        String currentDate = dateFormat.format(calendar.getTime());
+        dmyTextView.setText(currentDate);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // Stop updating time when the view is destroyed
+        handler.removeCallbacksAndMessages(null);
+    }
+}
