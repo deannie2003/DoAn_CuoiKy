@@ -8,15 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageButton
-        android:id="@+id/returnButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:background="@android:color/transparent"
-        android:contentDescription="false"
-        android:src="@drawable/baseline_reply_24"
-        android:visibility="visible"/>
+<!--    <ImageButton-->
+<!--        android:id="@+id/returnButton"-->
+<!--        android:layout_width="48dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:contentDescription="false"-->
+<!--        android:src="@drawable/baseline_reply_24"-->
+<!--        android:visibility="visible"/>-->
 
 </RelativeLayout>

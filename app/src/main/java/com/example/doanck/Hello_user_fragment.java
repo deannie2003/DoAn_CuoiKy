@@ -1,27 +1,21 @@
 package com.example.doanck;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Hello_user_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class Hello_user_fragment extends Fragment {
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,48 +67,57 @@ public class Hello_user_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_hello_user_fragment, container, false);
-        textView = view.findViewById(R.id.hi_user);
-        timeTextView = view.findViewById(R.id.time);
-        dmyTextView = view.findViewById(R.id.dmy);
-
-        handler = new Handler(Looper.getMainLooper());
-        startUpdatingDateTime();
-
+        View view = inflater.inflate(R.layout.fragment_hello_user_fragment,container,false);
+        Context ctx = view.getContext();
+//        textView = view.findViewById(R.id.hi_user);
+//        timeTextView = view.findViewById(R.id.time);
+//        dmyTextView = view.findViewById(R.id.dmy);
+//        handler = new Handler(Looper.getMainLooper());
+//        startUpdatingDateTime();
 
         // Thực hiện animation
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.hi_user_anim);
+        //Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.hi_user_anim);
         //textView.startAnimation(animation);
-            return view;
+        return view;
         }
-    private void startUpdatingDateTime() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                updateDateTime();
-                handler.postDelayed(this, 1000); // Update time every second
-            }
-        }, 1000); // Initial delay 1 second
-    }
+//    private void startUpdatingDateTime() {
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                updateDateTime();
+//                handler.postDelayed(this, 1000); // Update time every second
+//            }
+//        }, 1000); // Initial delay 1 second
+//    }
 
-    private void updateDateTime() {
-        Calendar calendar = Calendar.getInstance();
+//    private void updateDateTime() {
+//        Calendar calendar = Calendar.getInstance();
+//
+//        // Update time
+//        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+//        String currentTime = timeFormat.format(calendar.getTime());
+//        timeTextView.setText(currentTime);
+//        // Update date
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.getDefault());
+//        String currentDate = dateFormat.format(calendar.getTime());
+//        dmyTextView.setText(currentDate);
+//    }
 
-        // Update time
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-        String currentTime = timeFormat.format(calendar.getTime());
-        timeTextView.setText(currentTime);
-
-        // Update date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.getDefault());
-        String currentDate = dateFormat.format(calendar.getTime());
-        dmyTextView.setText(currentDate);
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        // Stop updating time when the view is destroyed
-        handler.removeCallbacksAndMessages(null);
+    public void onResume() {
+        super.onResume();
     }
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        // Stop updating time when the view is destroyed
+//        handler.removeCallbacksAndMessages(null);
+//    }
+public void onAttach(@NonNull Context context) {
+    super.onAttach(context);
+}
 }

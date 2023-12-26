@@ -3,7 +3,6 @@ package com.example.doanck.API;
 
 import com.example.doanck.Model.AssetToken;
 import com.example.doanck.Model.Datapoint;
-import com.example.doanck.Model.MapModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -49,7 +48,7 @@ public interface ApiInterface {
     );
 
     @GET("/api/master/map")
-    Call<MapModel> getMap();
+    Call<Object> getMap();
     @GET("api/master/asset/{assetID}")
     Call<Object> getDevices(@Path("assetID") String assetID, @Header("Authorization") String auth);
 

@@ -7,12 +7,10 @@
         android:id="@+id/hi_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hi, user !"
-        android:fontFamily="@font/golden"
-        android:textSize="50sp"
-
         android:layout_centerInParent="true"
-
+        android:fontFamily="@font/golden"
+        android:text="Hi, user !"
+        android:textSize="50sp"
         android:textStyle="bold" />
 
 

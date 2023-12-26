@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,13 +57,10 @@ public class Map_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
     private  GeoPoint startPoint;
-    private Location location;
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     MapView map = null;
     View view;
-    IMapController mapController;
     ApiInterface apiInterface;
     ArrayList<Double> centerList = new ArrayList<>();
     ArrayList<Double> boundsList = new ArrayList<>();
@@ -119,7 +114,6 @@ public class Map_Fragment extends Fragment {
         map = view.findViewById(R.id.map);
         map.setMultiTouchControls(true);
         map.setTileSource(TileSourceFactory.MAPNIK);
-        mapController = map.getController();
 
         apiInterface = APIClient.getClient().create(ApiInterface.class);
         Call mapValue = apiInterface.getMap();
@@ -158,10 +152,11 @@ public class Map_Fragment extends Fragment {
                         Log.e("API Call",Double.toString(maxZoom));
                         map.setMinZoomLevel(minZoom);
                         map.setMaxZoomLevel(maxZoom);
-                        map.invalidate();
+
                         BoundingBox boundingBox = new BoundingBox(boundsList.get(3), boundsList.get(2),boundsList.get(1), boundsList.get(0));
                         map.setScrollableAreaLimitDouble(boundingBox);
-                        mapController = map.getController();
+
+                        IMapController mapController = map.getController();
                         mapController.setZoom(zoom);
                         startPoint = new GeoPoint(centerList.get(1), centerList.get(0));
                         mapController.setCenter(startPoint);
@@ -274,9 +269,16 @@ public class Map_Fragment extends Fragment {
                         String value_colourTemperature = String.valueOf(colourTemperature.getDouble("value"));
                         String value_email = String.valueOf(email.getString("value"));
                         String value_onOff = String.valueOf(onOff.getBoolean("value"));
+
+
+//                        Log.d("AssetCall", humidity + temp + pressure + winDer + winSpeed
+//                                +place);
+
                         Double lon = 106.80345028525176;
                         Double lat = 10.869905172970164;
 
+//                        Log.d("API Call Device",Double.toString(lon));
+//                        Log.d("API Call Device",Double.toString(lat));;
                         LightMaker.setPosition(new GeoPoint(lat,lon));
                         LightMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                             @Override
@@ -295,11 +297,6 @@ public class Map_Fragment extends Fragment {
             public void onFailure(Call call, Throwable t) {
 
             }
-        });
-        Button button_getBack = view.findViewById(R.id.returnButton);
-        button_getBack.bringToFront();
-        button_getBack.setOnClickListener(v -> {
-            mapController.setCenter(startPoint);
         });
         map.getOverlays().add(WeatherMaker);
         map.getOverlays().add(LightMaker);
