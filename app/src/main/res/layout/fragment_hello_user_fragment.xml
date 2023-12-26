@@ -11,4 +11,31 @@
         android:fontFamily="@font/golden"
         android:textSize="50sp"
         android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="268dp"
+        android:text="TextView"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/dmy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/time"
+        android:layout_alignEnd="@+id/time"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="208dp"
+        android:text="TextView"
+        android:textSize="30sp" />
+
+
 </RelativeLayout>
