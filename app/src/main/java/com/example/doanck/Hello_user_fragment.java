@@ -1,9 +1,6 @@
 package com.example.doanck;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -11,12 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Switch;
 import android.widget.TextView;
 
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -81,10 +75,6 @@ public class Hello_user_fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hello_user_fragment, container, false);
         textView = view.findViewById(R.id.hi_user);
-
-        Switch sw = (Switch) view.findViewById(R.id.mySwitchId);
-        sw.setChecked(true);
-        sw.setChecked(false);
         timeTextView = view.findViewById(R.id.time);
         dmyTextView = view.findViewById(R.id.dmy);
 
