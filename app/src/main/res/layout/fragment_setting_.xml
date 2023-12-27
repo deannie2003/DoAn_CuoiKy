@@ -87,15 +87,16 @@
                                 android:text="Change to Vietnamese"
                                 />
 
-                            <Switch
+                            <androidx.appcompat.widget.SwitchCompat
+                                android:id="@+id/changeLangue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-
                                 android:layout_marginTop="14dp"
                                 android:layout_marginEnd="14dp"
                                 android:textColor="@color/accent_color"
                                 />
+
                         </LinearLayout>
                         <LinearLayout
                             android:id="@+id/action_change_theme"

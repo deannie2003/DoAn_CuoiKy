@@ -1,39 +1,16 @@
 package com.example.doanck;
 
 import android.annotation.SuppressLint;
-
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import java.util.Locale;
-
-
-import java.util.Locale;
-
-
-import android.widget.PopupMenu;
-
-import com.google.android.material.button.MaterialButton;
 
 
 public class homePageActivity extends AppCompatActivity {
@@ -125,6 +102,4 @@ public class homePageActivity extends AppCompatActivity {
         btn_google = findViewById(R.id.google_btn);
         btn_forgot = findViewById(R.id.forgot_pw);
     }
-
-
 }
