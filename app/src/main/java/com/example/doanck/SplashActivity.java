@@ -1,6 +1,7 @@
 package com.example.doanck;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -31,15 +32,26 @@ public class SplashActivity extends AppCompatActivity {
 
         img.setAnimation(topAnim);
         app_name.setAnimation(botAnim);
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", null);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(SplashActivity.this,intro_app_activity.class);
-                startActivity(i);
-                finish();
-            }
-        },SPLASH_SCREEN);
+
+        if(token != null) {
+            // Người dùng đã đăng nhập, chuyển đến màn hình hello_user
+            Intent intent = new Intent(SplashActivity.this, sign_in_activity.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(SplashActivity.this, intro_app_activity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }, SPLASH_SCREEN);
+        }
 
     }
 

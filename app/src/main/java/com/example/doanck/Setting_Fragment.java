@@ -1,5 +1,8 @@
 package com.example.doanck;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +10,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.example.doanck.ModelLogin.Username;
 /**
  * A simple {@link Fragment} subclass.
@@ -62,6 +68,30 @@ public class Setting_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_setting_, container, false);
+        Button buttonSave = view.findViewById(R.id.log_out);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi nút được nhấn ở đây
+                logoutUser();
+            }
+        });
         return  view;
+    }
+    private void logoutUser() {
+        // Xóa token từ SharedPreferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("token");
+        editor.apply();
+
+        // Hiển thị thông báo
+        Toast.makeText(getActivity(), "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
+
+        // Chuyển hướng người dùng về màn hình đăng nhập
+        // Thay thế `LoginActivity.class` bằng class của màn hình đăng nhập của bạn
+        Intent intent = new Intent(getActivity(), sign_in_activity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 }

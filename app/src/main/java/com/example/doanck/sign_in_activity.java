@@ -33,6 +33,7 @@ public class sign_in_activity extends AppCompatActivity {
     EditText userName,Email,Password;
     TextView txt_sign_in;
 
+
     boolean isChanged = false;
     private void setLanguage() {
         boolean isVietnamese = prefs.getBoolean("isVietnamese", false);
@@ -100,15 +101,18 @@ public class sign_in_activity extends AppCompatActivity {
                             String username = userName.getText().toString();
                             String email = Email.getText().toString();
                             Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
+
+                            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                            myEdit.putString("token", token);
+                            myEdit.apply();
+
+
                             Intent intent = new Intent(sign_in_activity.this,Main_dash_board_activity.class);
                             intent.putExtra("username", username);
                             intent.putExtra("token",token);
                             intent.putExtra("email",email);
                             startActivity(intent);
-                            SharedPreferences.Editor editor = prefs.edit();
-                            editor.putBoolean("isLoggedIn", true);
-                            editor.putString("token", token); // Lưu token có thể hữu ích cho các yêu cầu sau này.
-                            editor.apply();
 
                             finishAffinity();
                         }
