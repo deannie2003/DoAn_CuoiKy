@@ -1,12 +1,31 @@
 package com.example.doanck;
 
+import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+
+import com.example.doanck.API.APIClient;
+import com.example.doanck.API.ApiInterface;
+import com.example.doanck.Model.Token;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +42,11 @@ public class Weather_Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    View view;
+    ApiInterface apiInterface;
+    String assetIdDefautWeather= "4EqQeQ0L4YNWNNTzvTOqjy";
+
+    TextView txtHumidity,txtPlace,txtTempInfor,txtWindDirection,txtWindSpeed,txtPressure,txtSunset,txtSunRise,txtDescripion;
 
     public Weather_Fragment() {
         // Required empty public constructor
@@ -59,6 +83,79 @@ public class Weather_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather_, container, false);
+        view = inflater.inflate(R.layout.fragment_weather_, container, false);
+        Context ctx = view.getContext();
+        getElement();
+
+        apiInterface = APIClient.getClient().create(ApiInterface.class);
+        Call MapDevice = apiInterface.getDevices(assetIdDefautWeather, "Bearer "+ Token.getToken());
+        Log.d("tokenmap:" , Token.getToken());
+        MapDevice.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                Log.d("API Call", response.code()+"");
+                if (response.isSuccessful() && response.body() != null){
+                    Log.d("API Weather","Successful");
+                    Log.d("API Weather",response.toString());
+                    Log.d("API Weather","response: " + new Gson().toJson(response.body()));
+                    try {
+                        JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
+                        JSONObject attributes = jsonObject.getJSONObject("attributes");
+                        JSONObject data = attributes.getJSONObject("data");
+                        JSONObject value = data.getJSONObject("value");
+                        JSONArray weather = value.getJSONArray("weather");
+                        JSONObject sys = value.getJSONObject("sys");
+                        JSONObject main = value.getJSONObject("main");
+
+                        JSONObject wind = value.getJSONObject("wind");
+
+                        String humidity = String.valueOf(main.getDouble("humidity"));
+                        String temp = String.valueOf(main.getDouble("temp"));
+                        String pressure = String.valueOf(main.getDouble("pressure"));
+                        String winSpeed = String.valueOf(wind.getDouble("speed"));
+                        String winDer = String.valueOf(wind.getDouble("deg"));
+                        Long LongsunSet = Long.valueOf(sys.getLong("sunset"));
+                        Long LongsunRise = Long.valueOf(sys.getLong("sunrise"));
+                        String sunSet = convertTimestampToTime(LongsunSet);
+                        String sunRise = convertTimestampToTime(LongsunRise);
+                        JSONObject weatherObject = weather.getJSONObject(0);
+                        String description = weatherObject.getString("description");
+                        Log.d("Weather", humidity + temp + pressure + winDer + winSpeed + sunRise + sunSet);
+
+                        txtTempInfor.setText(temp + "°C");
+                        txtWindDirection.setText(winDer);
+                        txtWindSpeed.setText(winSpeed);
+                        txtPressure.setText(pressure);
+                        txtHumidity.setText(humidity);
+                        txtDescripion.setText(description);
+                        txtSunset.setText(sunSet);
+                        txtSunRise.setText(sunRise);
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
+        return  view;
+    }
+    void getElement(){
+        txtTempInfor = view.findViewById(R.id.nhietdo);
+        txtWindDirection = view.findViewById(R.id.huongio);
+        txtWindSpeed = view.findViewById(R.id.tocdogio);
+        txtPressure = view.findViewById(R.id.apsuat);
+        txtHumidity = view.findViewById(R.id.doam);
+        txtSunRise = view.findViewById(R.id.Sunrise);
+        txtSunset = view.findViewById(R.id.Sunset);
+        txtDescripion = view.findViewById(R.id.Desciption);
+    }
+    String convertTimestampToTime(long timestamp) {
+        Date date = new Date(timestamp * 1000);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        return dateFormat.format(date);
     }
 }

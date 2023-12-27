@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/place"
-            android:text="HO CHI MINH CITY"
+            android:text="BIEN HOA CITY"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -45,16 +45,20 @@
             tools:ignore="MissingConstraints">
 
 
-
             <TextView
+<<<<<<< HEAD
                 android:id="@+id/desciption"
                 android:layout_width="120dp"
+=======
+                android:id="@+id/Desciption"
+                android:layout_width="180dp"
+>>>>>>> ff463ea4d8f84c7237fe0a3b0ae5fb1d20fedeed
                 android:layout_height="wrap_content"
-
+                android:drawableStart="@drawable/baseline_cloud_24"
                 android:gravity="center"
                 android:text="few cloud"
-                android:drawableStart="@drawable/baseline_cloud_24"
                 android:textColor="@color/white"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/distance"
@@ -68,7 +72,7 @@
                 android:layout_centerInParent="true"
 
 
-                android:text="40°"
+                android:text="40"
                 android:textColor="@color/white"
                 android:textSize="95sp"
                 android:textStyle="bold"
@@ -80,6 +84,7 @@
         </LinearLayout>
 
         <LinearLayout
+<<<<<<< HEAD
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -124,12 +129,99 @@
 
         <LinearLayout
             android:id="@+id/humidity_layout"
+=======
+            android:id="@+id/Sunrise_layout"
+>>>>>>> ff463ea4d8f84c7237fe0a3b0ae5fb1d20fedeed
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="@drawable/weather_backgr"
             app:layout_constraintStart_toStartOf="@+id/first_layout"
             app:layout_constraintTop_toBottomOf="@+id/first_layout"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/sunrises"
+                android:layout_margin="10dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Sunrise"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    />
+                <TextView
+                    android:id="@+id/Sunrise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="50"
+                    android:textSize="60sp"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/Sunset_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/weather_backgr"
+            app:layout_constraintStart_toStartOf="@+id/Sunrise_layout"
+            app:layout_constraintTop_toBottomOf="@+id/Sunrise_layout"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/sunsets"
+                android:layout_margin="10dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Sunrise"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    />
+                <TextView
+                    android:id="@+id/Sunset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="50"
+                    android:textSize="60sp"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/humidity_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/weather_backgr"
+            app:layout_constraintStart_toStartOf="@+id/Sunset_layout"
+            app:layout_constraintTop_toBottomOf="@+id/Sunset_layout"
             tools:ignore="MissingConstraints"
             android:gravity="center"
             android:orientation="horizontal">
@@ -156,6 +248,7 @@
                     android:textColor="@color/white"
                     />
                 <TextView
+                    android:id="@+id/doam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -200,6 +293,7 @@
                     android:textColor="@color/white"
                     />
                 <TextView
+                    android:id="@+id/apsuat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -244,6 +338,7 @@
                     android:textColor="@color/white"
                     />
                 <TextView
+                    android:id="@+id/huongio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -292,11 +387,10 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="50"
+                    android:id="@+id/tocdogio"
                     android:textSize="60sp"
                     android:textColor="@color/white"
                     />
-
-
             </LinearLayout>
         </LinearLayout>
 
