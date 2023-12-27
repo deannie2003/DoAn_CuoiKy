@@ -99,19 +99,22 @@ public class sign_in_activity extends AppCompatActivity {
                         if(token!= null){
                             Log.d("token", "token:" + token);
                             String username = userName.getText().toString();
+                            String password = Password.getText().toString();
                             String email = Email.getText().toString();
                             Toast.makeText(sign_in_activity.this,"Đăng Nhập Thành Công!",Toast.LENGTH_SHORT).show();
 
                             SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
                             SharedPreferences.Editor myEdit = sharedPreferences.edit();
                             myEdit.putString("token", token);
+                            myEdit.putString("username", username);
+                            myEdit.putString("password", password);
                             myEdit.apply();
 
 
                             Intent intent = new Intent(sign_in_activity.this,Main_dash_board_activity.class);
-                            intent.putExtra("username", username);
-                            intent.putExtra("token",token);
-                            intent.putExtra("email",email);
+//                            intent.putExtra("username", username);
+//                            intent.putExtra("token",token);
+//                            intent.putExtra("email",email);
                             startActivity(intent);
 
                             finishAffinity();

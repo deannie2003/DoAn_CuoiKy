@@ -83,6 +83,8 @@ public class Setting_Fragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove("token");
+        editor.remove("username");
+        editor.remove("password");
         editor.apply();
 
         // Hiển thị thông báo

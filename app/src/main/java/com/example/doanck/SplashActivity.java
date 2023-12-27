@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -37,10 +38,10 @@ public class SplashActivity extends AppCompatActivity {
 
 
         if(token != null) {
-            // Người dùng đã đăng nhập, chuyển đến màn hình hello_user
-            Intent intent = new Intent(SplashActivity.this, sign_in_activity.class);
-            startActivity(intent);
-            finish();
+                // Người dùng đã đăng nhập, chuyển đến màn hình hello_user
+                Intent intent = new Intent(SplashActivity.this, Main_dash_board_activity.class);
+                startActivity(intent);
+                finish();
         }
         else{
                 new Handler().postDelayed(new Runnable() {
@@ -52,7 +53,5 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 }, SPLASH_SCREEN);
         }
-
     }
-
 }

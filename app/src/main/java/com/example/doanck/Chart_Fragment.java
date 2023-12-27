@@ -1,6 +1,7 @@
 package com.example.doanck;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -261,6 +262,7 @@ public class Chart_Fragment extends Fragment {
 
         lineDataSet.setLineWidth(lineWidth);
         lineDataSet.setValueTextSize(valueTextSize);
+        lineDataSet.setColor(Color.parseColor("#0000FF"));
 
 
 
@@ -285,7 +287,6 @@ public class Chart_Fragment extends Fragment {
 
         YAxis leftAxis = chart.getAxisLeft();
         leftAxis.setGranularity(10f);
-
         chart.setData(data);
         chart.invalidate();
     }

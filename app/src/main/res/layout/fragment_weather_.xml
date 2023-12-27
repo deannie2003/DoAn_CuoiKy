@@ -46,13 +46,9 @@
 
 
             <TextView
-<<<<<<< HEAD
-                android:id="@+id/desciption"
-                android:layout_width="120dp"
-=======
+
                 android:id="@+id/Desciption"
                 android:layout_width="180dp"
->>>>>>> ff463ea4d8f84c7237fe0a3b0ae5fb1d20fedeed
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/baseline_cloud_24"
                 android:gravity="center"
@@ -84,7 +80,7 @@
         </LinearLayout>
 
         <LinearLayout
-<<<<<<< HEAD
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -128,10 +124,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/humidity_layout"
-=======
+
             android:id="@+id/Sunrise_layout"
->>>>>>> ff463ea4d8f84c7237fe0a3b0ae5fb1d20fedeed
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

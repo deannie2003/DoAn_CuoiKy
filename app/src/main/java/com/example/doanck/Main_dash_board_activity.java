@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -24,12 +25,16 @@ public class Main_dash_board_activity extends AppCompatActivity {
         setContentView(R.layout.activity_main_dash_board);
         GetElements();
 
-        String token = getIntent().getStringExtra("token");
-        Token.SetToken(token);
-        Log.d("Token:", Token.getToken());
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        String username = sharedPreferences.getString("username", "");
+        String token = sharedPreferences.getString("token", "");
 
-        String userName = getIntent().getStringExtra("Username");
-        Username.setName(userName);
+
+//        String token = getIntent().getStringExtra("token");
+        Token.SetToken(token);
+
+//        String userName = getIntent().getStringExtra("Username");
+        Username.setName(username);
 
         viewPageFragment = new ViewPageFragment(getSupportFragmentManager(), this);
 
