@@ -112,9 +112,7 @@ public class sign_in_activity extends AppCompatActivity {
 
 
                             Intent intent = new Intent(sign_in_activity.this,Main_dash_board_activity.class);
-//                            intent.putExtra("username", username);
-//                            intent.putExtra("token",token);
-//                            intent.putExtra("email",email);
+
                             startActivity(intent);
 
                             finishAffinity();

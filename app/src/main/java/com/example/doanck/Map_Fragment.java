@@ -2,10 +2,12 @@ package com.example.doanck;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,6 +34,7 @@ import org.osmdroid.util.BoundingBox;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.ScaleBarOverlay;
 import org.osmdroid.views.overlay.compass.CompassOverlay;
 import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider;
 import org.osmdroid.views.overlay.gestures.RotationGestureOverlay;
@@ -115,7 +118,6 @@ public class Map_Fragment extends Fragment {
         map = view.findViewById(R.id.map);
         map.setMultiTouchControls(true);
         map.setTileSource(TileSourceFactory.MAPNIK);
-
         apiInterface = APIClient.getClient().create(ApiInterface.class);
         Call mapValue = apiInterface.getMap();
         mapValue.enqueue(new Callback() {
@@ -178,10 +180,15 @@ public class Map_Fragment extends Fragment {
                 map);
         mCompassOverlay.enableCompass();
         map.getOverlays().add(this.mCompassOverlay);
-
         RotationGestureOverlay mRotationGestureOverlay = new RotationGestureOverlay(map);
         mRotationGestureOverlay.setEnabled(true);
         map.getOverlays().add(mRotationGestureOverlay);
+        ScaleBarOverlay mScaleBarOverlay = new ScaleBarOverlay(map);
+        final DisplayMetrics dm = ctx.getResources().getDisplayMetrics();
+        mScaleBarOverlay.setCentred(true);
+        mScaleBarOverlay.setScaleBarOffset(dm.widthPixels / 2, 10);
+        map.getOverlays().add(mScaleBarOverlay);
+        Resources res = getResources();
 
         // Khởi tạo Marker đánh dấu cho hai thiết bị Weather và Light
 
@@ -273,6 +280,13 @@ public class Map_Fragment extends Fragment {
                         Double lon = 106.80345028525176;
                         Double lat = 10.869905172970164;
                         LightMaker.setPosition(new GeoPoint(lat,lon));
+                        LightMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                            @Override
+                            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                                showDialog_1(value_brightness, value_colourTemperature, value_email, value_onOff);
+                                return false;
+                            }
+                        });
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -283,23 +297,30 @@ public class Map_Fragment extends Fragment {
 
             }
         });
-        LightMaker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker, MapView mapView) {
-                showDialog_1(value_brightness, value_colourTemperature, value_email, value_onOff);
-                return false;
-            }
-        });
         map.getOverlays().add(WeatherMaker);
         map.getOverlays().add(LightMaker);
         map.invalidate();
         return view;
     }
-    private void showDialog(
+    private void showDialogDelayed(String value_brightness, String value_colourTemperature, String value_email, String value_onOff) {
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                showDialog_1(value_brightness, value_colourTemperature, value_email, value_onOff);
+            }
+        }, 400); // Trì hoãn 400ms để tránh chồng chéo hoạt ảnh
+    }
+
+    void showDialog(
             String humidity,String temp,String pressure,String winSpeed,String winDer,String place){
-        final Dialog dialog = new Dialog(getActivity());
+        Dialog dialog = new Dialog(view.getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottom_dialog);
+
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
 
         txtHumidity=dialog.findViewById(R.id.txtHumidity);
         txtPlace = dialog.findViewById(R.id.txtPlace);
@@ -316,16 +337,19 @@ public class Map_Fragment extends Fragment {
         txtPressure.setText(pressure);
 
         dialog.show();
+    }
+    void showDialog_1(
+            String value_brightness,String value_colourTemperature,String value_email,String value_onOff){
+//        final Dialog dialog = new Dialog(getActivity());
+        Dialog dialog = new Dialog(view.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_dialog_1);
+
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
-    }
-    private void showDialog_1(
-            String value_brightness,String value_colourTemperature,String value_email,String value_onOff){
-        final Dialog dialog = new Dialog(getActivity());
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.bottom_dialog_1);
+
 
         txtBrightness=dialog.findViewById(R.id.txtBrightness);
         txtColorTemp = dialog.findViewById(R.id.txtTempInfor);
@@ -338,10 +362,6 @@ public class Map_Fragment extends Fragment {
         txtOnoff.setText(value_onOff);
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
     @Override
     public void onPause() {

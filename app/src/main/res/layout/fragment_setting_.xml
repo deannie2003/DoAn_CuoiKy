@@ -32,18 +32,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints">
 
-                    <TextView
-                        android:id="@+id/hi_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:drawableStart="@drawable/baseline_person_24"
-                        android:text="TextView"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints" />
+
 
                     <ImageView
                         android:id="@+id/avt"
@@ -90,13 +79,15 @@
                                 android:textStyle="bold" />
 
                             <Switch
+                                android:id="@+id/changeLangue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-
                                 android:layout_marginTop="14dp"
                                 android:layout_marginEnd="14dp"
+
                                 android:textColor="@color/accent_color" />
+
                         </LinearLayout>
 
                         <LinearLayout

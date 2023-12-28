@@ -262,7 +262,7 @@ public class Chart_Fragment extends Fragment {
 
         lineDataSet.setLineWidth(lineWidth);
         lineDataSet.setValueTextSize(valueTextSize);
-        lineDataSet.setColor(Color.parseColor("#0000FF"));
+        lineDataSet.setColor(Color.parseColor("#6519b5"));
 
 
 

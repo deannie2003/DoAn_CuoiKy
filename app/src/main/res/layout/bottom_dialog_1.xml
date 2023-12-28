@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#281E43">
-
+    android:background="#281E43"
+    android:orientation="vertical"
+    >
 
     <TextView
 
@@ -12,17 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="5dp"
-        android:text="Weather Information"
+        android:text="Light Information"
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_bright"
         android:textSize="20dp"
         android:textStyle="bold" />
 
     <LinearLayout
-        android:id="@+id/layoutEdit"
-        android:orientation="horizontal"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="8dp">
 
 
@@ -33,18 +34,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Brightness(%)"
             android:layout_marginLeft="30dp"
+            android:text="Email"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
         <TextView
-            android:id="@+id/txtBrightness"
+            android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="75dp"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="15sp" />
 
@@ -52,9 +54,9 @@
 
     <LinearLayout
 
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="8dp">
 
 
@@ -65,84 +67,88 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Color Temperature (°K)"
             android:layout_marginLeft="30dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
-        <TextView
-            android:id="@+id/txtTempInfor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/white"
-            android:layout_marginLeft="75dp"
-            android:layout_gravity="center"
-            android:textSize="15sp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:layout_marginLeft="30dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
-        <TextView
-            android:id="@+id/txtEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/white"
-            android:layout_marginLeft="75dp"
-            android:layout_gravity="center"
-            android:textSize="15sp"/>
-
-    </LinearLayout>
-    <LinearLayout
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="ON/OFF"
-            android:layout_marginLeft="30dp"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/txtonOff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:layout_marginLeft="65dp"
             android:layout_gravity="center"
-            android:textColor="@color/white"
+            android:layout_marginLeft="65dp"
             android:gravity="center"
-            android:textSize="15sp"/>
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Brightness(%)"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Color Temperature(°K)"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTempInfor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="75dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
     </LinearLayout>
 

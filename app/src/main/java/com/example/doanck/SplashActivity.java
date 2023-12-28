@@ -33,12 +33,11 @@ public class SplashActivity extends AppCompatActivity {
 
         img.setAnimation(topAnim);
         app_name.setAnimation(botAnim);
+
         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         String token = sharedPreferences.getString("token", null);
 
-
         if(token != null) {
-                // Người dùng đã đăng nhập, chuyển đến màn hình hello_user
                 Intent intent = new Intent(SplashActivity.this, Main_dash_board_activity.class);
                 startActivity(intent);
                 finish();

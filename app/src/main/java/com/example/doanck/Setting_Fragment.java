@@ -87,11 +87,10 @@ public class Setting_Fragment extends Fragment {
         editor.remove("password");
         editor.apply();
 
-        // Hiển thị thông báo
+
         Toast.makeText(getActivity(), "Đăng xuất thành công!", Toast.LENGTH_SHORT).show();
 
-        // Chuyển hướng người dùng về màn hình đăng nhập
-        // Thay thế `LoginActivity.class` bằng class của màn hình đăng nhập của bạn
+
         Intent intent = new Intent(getActivity(), sign_in_activity.class);
         startActivity(intent);
         getActivity().finish();

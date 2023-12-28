@@ -87,7 +87,7 @@
 
     <Button
         android:id="@+id/button_homepage"
-        android:layout_width="160dp"
+        android:layout_width="140dp"
         android:layout_height="73dp"
         android:background="@drawable/btn_background"
         android:padding="15dp"
@@ -98,7 +98,7 @@
 
     <Button
         android:id="@+id/button_sign_in"
-        android:layout_width="160dp"
+        android:layout_width="140dp"
         android:layout_height="73dp"
         android:layout_marginRight="30dp"
         android:layout_below="@id/password"

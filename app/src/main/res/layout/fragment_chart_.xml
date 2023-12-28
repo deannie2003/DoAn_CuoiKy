@@ -23,6 +23,7 @@
         android:layout_marginStart="25sp"
         android:layout_marginEnd="25sp"
         android:layout_marginBottom="240dp"
+        android:textColorHint="@color/white"
         android:hint="Select Attribute"
         app:boxCornerRadiusBottomEnd="10sp"
         app:boxCornerRadiusBottomStart="10sp"
@@ -56,6 +57,8 @@
         android:hint="Select Timer"
         app:boxCornerRadiusBottomEnd="10sp"
         app:boxCornerRadiusBottomStart="10sp"
+        android:textColorHint="@color/white"
+
         app:boxCornerRadiusTopEnd="10sp"
         app:boxCornerRadiusTopStart="10sp"
         app:boxStrokeWidth="0sp"
@@ -68,9 +71,10 @@
             android:id="@+id/inputTVTimer"
             android:layout_width="360dp"
             android:layout_height="55dp"
-            android:textColor="@color/white"
             android:background="@drawable/dash_board_background"
             android:inputType="none"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             app:simpleItems="@array/Timer_list" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -89,6 +93,7 @@
         app:boxCornerRadiusBottomEnd="10sp"
         app:boxCornerRadiusBottomStart="10sp"
         app:boxCornerRadiusTopEnd="10sp"
+        android:textColorHint="@color/white"
         app:boxCornerRadiusTopStart="10sp"
         app:boxStrokeWidth="0sp"
         app:boxStrokeWidthFocused="0sp"
@@ -99,9 +104,9 @@
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/inputTVDialogTimer"
             android:layout_width="360dp"
-            android:textColor="@color/white"
-            android:background="@drawable/dash_board_background"
+    android:textColor="@color/white"
             android:layout_height="55dp"
+            android:background="@drawable/dash_board_background"
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -111,14 +116,13 @@
         android:id="@+id/lineChart"
         android:layout_width="390dp"
         android:layout_height="339dp"
-        android:alpha="0.9"
         android:layout_marginBottom="48dp"
-android:background="@drawable/chart_backgr"
+        android:alpha="0.9"
+        android:background="@drawable/chart_backgr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <Button
         android:id="@+id/btnShowChart"
